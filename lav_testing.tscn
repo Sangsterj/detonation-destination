@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://b15jo4cwp5sq5"]
+
+[ext_resource type="PackedScene" uid="uid://48yofs8axf7v" path="res://cube.tscn" id="1_ntlfe"]
+[ext_resource type="Shader" path="res://vhs.gdshader" id="2_ixf85"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3unwm"]
+
+[sub_resource type="Sky" id="Sky_1femj"]
+sky_material = SubResource("ProceduralSkyMaterial_3unwm")
+
+[sub_resource type="Environment" id="Environment_vgpoq"]
+background_mode = 2
+background_energy_multiplier = 1.71
+sky = SubResource("Sky_1femj")
+sky_custom_fov = 85.3
+ambient_light_color = Color(0.560134, 0.409155, 0.764157, 1)
+ambient_light_energy = 12.12
+adjustment_contrast = 1.32
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4c1p"]
+size = Vector3(12, 1, 12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdqmg"]
+shader = ExtResource("2_ixf85")
+shader_parameter/tape_wave_amount = 0.0
+shader_parameter/tape_crease_amount = 0.0
+shader_parameter/color_displacement = 0.403
+shader_parameter/lines_velocity = 0.12
+
+[node name="lav-testing" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.824265, 0.181561, -0.536306, 0, 0.947194, 0.320663, 0.566205, -0.264311, 0.780738, -2.26283, 1.26105, 4.13991)
+environment = SubResource("Environment_vgpoq")
+fov = 90.02
+
+[node name="Cube" parent="." instance=ExtResource("1_ntlfe")]
+
+[node name="Cube2" parent="." instance=ExtResource("1_ntlfe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96312, -1.15842)
+
+[node name="Cube3" parent="." instance=ExtResource("1_ntlfe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.770006, 2.08207, 0.872745)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86345, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_x4c1p")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
+size = Vector3(12, 1, 12)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.737596, 0.618904, 0.27002, 0, -0.399885, 0.916565, 0.675243, -0.676055, -0.294954, 0, 4.80135, 0)
+shadow_enabled = true
+shadow_blur = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_bdqmg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
