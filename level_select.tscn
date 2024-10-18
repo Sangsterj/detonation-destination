@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://15e3ivwcordh"]
+
+[ext_resource type="Script" path="res://level_select.gd" id="1_7he4n"]
+[ext_resource type="PackedScene" uid="uid://osf177nbs8es" path="res://player.tscn" id="3_evnjy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7ym6"]
+size = Vector3(20, 1, 20)
+
+[node name="Level Select" type="Node"]
+script = ExtResource("1_7he4n")
+
+[node name="LS_Scene" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LS_Scene"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LS_Scene/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25801, 0)
+shape = SubResource("BoxShape3D_d7ym6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LS_Scene"]
+size = Vector3(20, 1, 20)
+
+[node name="Player" parent="." instance=ExtResource("3_evnjy")]
+transform = Transform3D(1, 0, 0, 0, 0.966399, 0.257048, 0, -0.257048, 0.966399, 0, 4.10408, 4.09264)
