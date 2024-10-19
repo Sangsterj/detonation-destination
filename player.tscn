@@ -1,5 +1,11 @@
-[gd_scene format=3 uid="uid://osf177nbs8es"]
+[gd_scene load_steps=2 format=3 uid="uid://osf177nbs8es"]
 
-[node name="Player" type="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.817155, 0.576418, 0, -0.576418, 0.817155, 0, 5.70051, 0)
+[ext_resource type="Script" path="res://player.gd" id="1_5tn1c"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5.70051, 0)
+script = ExtResource("1_5tn1c")
+
+[node name="Player" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 fov = 90.0
