@@ -22,9 +22,9 @@ adjustment_contrast = 1.32
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6prb"]
 shader = ExtResource("2_ixf85")
-shader_parameter/SCREEN_WIDTH = 1152.0
-shader_parameter/COLOR_FACTOR = 10.0
-shader_parameter/DITHERING_STRENTH = 0.048
+shader_parameter/SCREEN_WIDTH = 1120.0
+shader_parameter/COLOR_FACTOR = 6.0
+shader_parameter/DITHERING_STRENTH = 0.05
 
 [node name="lav-testing" type="Node3D"]
 

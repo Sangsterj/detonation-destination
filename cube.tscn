@@ -8,6 +8,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_silya"]
 
 [node name="Cube" type="Node3D"]
+physics_interpolation_mode = 1
 script = ExtResource("1_oxnf8")
 metadata/destructable = true
 
