@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://b23gkcyg5wb5v"]
+
+[ext_resource type="Texture2D" uid="uid://dkkil1rc742ej" path="res://assets/height.png" id="1_5jyym"]
+[ext_resource type="Script" path="res://platform.gd" id="1_jgqph"]
+[ext_resource type="Material" uid="uid://cemt61qjetkup" path="res://assets/green_platform_body.material" id="3_v1w6v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ndi3r"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6a62k"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0.427768, 0.233221, 1)
+metallic_specular = 1.0
+roughness = 0.0
+emission = Color(0.878765, 0.146658, 0.834275, 1)
+emission_energy_multiplier = 0.0
+emission_operator = 1
+normal_enabled = true
+normal_scale = 0.4
+normal_texture = ExtResource("1_5jyym")
+rim_enabled = true
+heightmap_enabled = true
+heightmap_scale = 1.2
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("1_5jyym")
+uv1_scale = Vector3(1, 1, 6)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_03ila"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_6a62k")
+size = Vector2(1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_damy4"]
+resource_local_to_scene = true
+
+[node name="platform" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86345, 0)
+script = ExtResource("1_jgqph")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ndi3r")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+size = Vector3(1, 1, 1)
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51, 0)
+mesh = SubResource("PlaneMesh_03ila")
+
+[node name="body" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_v1w6v")
+mesh = SubResource("BoxMesh_damy4")
