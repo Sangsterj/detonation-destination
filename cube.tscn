@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://48yofs8axf7v"]
+[gd_scene load_steps=6 format=3 uid="uid://dfy0mtas2a5f3"]
 
 [ext_resource type="Material" uid="uid://btkd1w4stypjd" path="res://assets/destructible.material" id="1_d7ftk"]
 [ext_resource type="Script" path="res://cube.gd" id="1_oxnf8"]
-[ext_resource type="Material" uid="uid://dhi0dj1layiyb" path="res://explosion_particles.tres" id="3_x642f"]
+[ext_resource type="Material" uid="uid://yhubwyclbpxu" path="res://explosion_particles.tres" id="3_x642f"]
 [ext_resource type="ArrayMesh" uid="uid://d2wv5oin3c8ur" path="res://assets/octahedron.obj" id="3_yve16"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_silya"]
 
 [node name="Cube" type="Node3D"]
-physics_interpolation_mode = 1
 script = ExtResource("1_oxnf8")
 metadata/destructable = true
 

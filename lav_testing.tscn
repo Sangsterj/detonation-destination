@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://b15jo4cwp5sq5"]
 
 [ext_resource type="Script" path="res://camera_move_testing.gd" id="1_4j173"]
-[ext_resource type="PackedScene" uid="uid://48yofs8axf7v" path="res://cube.tscn" id="1_ntlfe"]
+[ext_resource type="PackedScene" uid="uid://dfy0mtas2a5f3" path="res://cube.tscn" id="1_ntlfe"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="2_ixf85"]
-[ext_resource type="PackedScene" uid="uid://b23gkcyg5wb5v" path="res://green_platform.tscn" id="3_elk4y"]
-[ext_resource type="PackedScene" uid="uid://dbvvnfyw0y6xy" path="res://delete_destructables_zone.tscn" id="5_q0hm0"]
+[ext_resource type="PackedScene" path="res://green_platform.tscn" id="3_elk4y"]
+[ext_resource type="PackedScene" path="res://delete_destructables_zone.tscn" id="5_q0hm0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3unwm"]
 
@@ -22,9 +22,9 @@ adjustment_contrast = 1.32
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6prb"]
 shader = ExtResource("2_ixf85")
-shader_parameter/SCREEN_WIDTH = 1120.0
-shader_parameter/COLOR_FACTOR = 6.0
-shader_parameter/DITHERING_STRENTH = 0.05
+shader_parameter/SCREEN_WIDTH = 1152.0
+shader_parameter/COLOR_FACTOR = 10.0
+shader_parameter/DITHERING_STRENTH = 0.048
 
 [node name="lav-testing" type="Node3D"]
 
