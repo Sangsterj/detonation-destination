@@ -21,4 +21,3 @@ shape = SubResource("BoxShape3D_d7ym6")
 size = Vector3(20, 1, 20)
 
 [node name="Player" parent="." instance=ExtResource("3_evnjy")]
-transform = Transform3D(1, 0, 0, 0, 0.966399, 0.257048, 0, -0.257048, 0.966399, 0, 4.10408, 4.09264)
