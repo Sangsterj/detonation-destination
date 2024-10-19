@@ -1,5 +1,22 @@
-[gd_scene format=3 uid="uid://cjns13k2ctq5a"]
+[gd_scene load_steps=3 format=3 uid="uid://cjns13k2ctq5a"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_0vap4"]
+[ext_resource type="FontFile" uid="uid://dxh1euvkgfnvf" path="res://assets/millennia.regular.ttf" id="1_xkolf"]
 
 [node name="UI" type="Node3D"]
+script = ExtResource("1_0vap4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CurrrentWeapon" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -25.0
+offset_right = 180.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_xkolf")
+theme_override_font_sizes/font_size = 24
+text = "Current weapon"

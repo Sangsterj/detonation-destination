@@ -12,6 +12,16 @@ enum Weapon {
 
 var current_weapon = Weapon.CLICK
 
+func weapon_name(weapon):
+	match weapon:
+		Weapon.FLAMETHROWER:
+			return "Flamethrower"
+		Weapon.CLICK:
+			return "Cursor"
+		Weapon.EXPLOSIVE:
+			return "Bomb"
+	return "UNKNOWN WEAPON"
+
 # screen shake
 const SHAKING_DIMINISH = 0.9  # decreases additional shaking if it is already shaking a lot
 const SHAKING_GO_AWAY = 0.3  # decreases existing shaking (if it is already shaking)

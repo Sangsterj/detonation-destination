@@ -40,6 +40,8 @@ transform = Transform3D(0.737596, 0.618904, 0.27002, 0, -0.399885, 0.916565, 0.6
 shadow_enabled = true
 shadow_blur = 10.0
 
+[node name="UI" parent="." instance=ExtResource("6_0o7yy")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -49,8 +51,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="UI" parent="." instance=ExtResource("6_0o7yy")]
 
 [node name="platforms" type="Node3D" parent="."]
 
