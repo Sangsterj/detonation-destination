@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b15jo4cwp5sq5"]
+[gd_scene load_steps=11 format=3 uid="uid://b15jo4cwp5sq5"]
 
 [ext_resource type="Script" path="res://camera_move_testing.gd" id="1_4j173"]
 [ext_resource type="PackedScene" uid="uid://dfy0mtas2a5f3" path="res://cube.tscn" id="1_ntlfe"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="2_ixf85"]
 [ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="3_elk4y"]
 [ext_resource type="PackedScene" uid="uid://dbvvnfyw0y6xy" path="res://delete_destructables_zone.tscn" id="5_q0hm0"]
+[ext_resource type="PackedScene" uid="uid://cjns13k2ctq5a" path="res://ui.tscn" id="6_0o7yy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3unwm"]
 
@@ -49,6 +50,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="UI" parent="." instance=ExtResource("6_0o7yy")]
+
 [node name="platforms" type="Node3D" parent="."]
 
 [node name="platform" parent="platforms" instance=ExtResource("3_elk4y")]
@@ -71,6 +74,7 @@ size_x = 7
 size_z = 14
 
 [node name="destructables" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 1.5)
 
 [node name="cube-1" parent="destructables" instance=ExtResource("1_ntlfe")]
 

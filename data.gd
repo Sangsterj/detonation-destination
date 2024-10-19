@@ -11,3 +11,16 @@ enum Weapon {
 }
 
 var current_weapon = Weapon.CLICK
+
+# screen shake
+const SHAKING_DIMINISH = 0.9  # decreases additional shaking if it is already shaking a lot
+const SHAKING_GO_AWAY = 0.3  # decreases existing shaking (if it is already shaking)
+var shaking_amt: int = 0
+
+
+func shake_screen(amt: int) -> void:
+	shaking_amt = amt*pow(SHAKING_DIMINISH, shaking_amt)
+
+
+func _process(delta: float) -> void:
+	shaking_amt *= 1-delta*SHAKING_GO_AWAY

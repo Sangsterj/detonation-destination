@@ -41,3 +41,5 @@ explosiveness = 0.97
 randomness = 1.0
 process_material = ExtResource("5_sp724")
 draw_pass_1 = ExtResource("3_yve16")
+
+[node name="Sounds" type="Node3D" parent="."]

@@ -1,9 +1,10 @@
-extends Node3D
+extends Camera3D
 # other camera scripts can inherit from this
 # they must call the base_camera_process at the top of their _process method
 
 var mouse_pressed_prev = false
 var weapon = 1
+const BASE_FOV = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,13 +13,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func base_camera_process():
+	# screen shake
+	fov = BASE_FOV + randf_range(0.0, Data.shaking_amt)
 	
+	# inputs
 	if Input.is_action_pressed("Click"):
 		Data.current_weapon = Data.Weapon.CLICK
 	if Input.is_action_pressed("flamethrower"):
 		Data.current_weapon = Data.Weapon.FLAMETHROWER
-
-
+	
 	# destroy destructables
 	var cam = get_viewport().get_camera_3d()
 	var space_state = get_world_3d().direct_space_state
