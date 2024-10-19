@@ -14,9 +14,9 @@ func _ready() -> void:
 func base_camera_process():
 	
 	if Input.is_action_pressed("Click"):
-		weapon = 1
+		Data.current_weapon = Data.Weapon.CLICK
 	if Input.is_action_pressed("flamethrower"):
-		weapon = 2
+		Data.current_weapon = Data.Weapon.FLAMETHROWER
 
 
 	# destroy destructables
@@ -28,13 +28,13 @@ func base_camera_process():
 	var query = PhysicsRayQueryParameters3D.create(raycast_origin, raycast_end)
 	var intersect = space_state.intersect_ray(query)
 	if intersect.size() > 0:
-		if weapon == 1:
+		if Data.current_weapon == Data.Weapon.CLICK:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				if not mouse_pressed_prev:
 					if intersect.collider.get_parent().has_meta("destructable"):
 						intersect.collider.get_parent().explode()
 						
-		if weapon == 2:
+		if Data.current_weapon == Data.Weapon.FLAMETHROWER:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				if intersect.collider.get_parent().has_meta("destructable"):
 					intersect.collider.get_parent().burn()

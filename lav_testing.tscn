@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dfy0mtas2a5f3" path="res://cube.tscn" id="1_ntlfe"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="2_ixf85"]
 [ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="3_elk4y"]
-[ext_resource type="PackedScene" path="res://delete_destructables_zone.tscn" id="5_q0hm0"]
+[ext_resource type="PackedScene" uid="uid://dbvvnfyw0y6xy" path="res://delete_destructables_zone.tscn" id="5_q0hm0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3unwm"]
 
@@ -23,8 +23,8 @@ adjustment_contrast = 1.32
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6prb"]
 shader = ExtResource("2_ixf85")
 shader_parameter/SCREEN_WIDTH = 1152.0
-shader_parameter/COLOR_FACTOR = 10.0
-shader_parameter/DITHERING_STRENTH = 0.048
+shader_parameter/COLOR_FACTOR = 6.0
+shader_parameter/DITHERING_STRENTH = 0.06
 
 [node name="lav-testing" type="Node3D"]
 
