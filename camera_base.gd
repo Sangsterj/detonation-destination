@@ -3,7 +3,7 @@ extends Node3D
 # they must call the base_camera_process at the top of their _process method
 
 var mouse_pressed_prev = false
-
+var weapon = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +12,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func base_camera_process():
+	
+	if Input.is_action_pressed("Click"):
+		weapon = 1
+	if Input.is_action_pressed("flamethrower"):
+		weapon = 2
+
+
 	# destroy destructables
 	var cam = get_viewport().get_camera_3d()
 	var space_state = get_world_3d().direct_space_state
@@ -21,8 +28,16 @@ func base_camera_process():
 	var query = PhysicsRayQueryParameters3D.create(raycast_origin, raycast_end)
 	var intersect = space_state.intersect_ray(query)
 	if intersect.size() > 0:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			if not mouse_pressed_prev:
+		if weapon == 1:
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+				if not mouse_pressed_prev:
+					if intersect.collider.get_parent().has_meta("destructable"):
+						intersect.collider.get_parent().explode()
+						
+		if weapon == 2:
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				if intersect.collider.get_parent().has_meta("destructable"):
-					intersect.collider.get_parent().explode()
+					intersect.collider.get_parent().burn()
+						
+	
 	mouse_pressed_prev = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)

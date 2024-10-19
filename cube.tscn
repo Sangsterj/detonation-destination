@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfy0mtas2a5f3"]
+[gd_scene load_steps=7 format=3 uid="uid://dfy0mtas2a5f3"]
 
 [ext_resource type="Material" uid="uid://btkd1w4stypjd" path="res://assets/destructible.material" id="1_d7ftk"]
 [ext_resource type="Script" path="res://cube.gd" id="1_oxnf8"]
 [ext_resource type="Material" uid="uid://yhubwyclbpxu" path="res://explosion_particles.tres" id="3_x642f"]
 [ext_resource type="ArrayMesh" uid="uid://d2wv5oin3c8ur" path="res://assets/octahedron.obj" id="3_yve16"]
+[ext_resource type="Material" uid="uid://w452d86uuh1x" path="res://burn_particles.tres" id="5_sp724"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_silya"]
 
@@ -28,4 +29,15 @@ one_shot = true
 explosiveness = 0.97
 randomness = 1.0
 process_material = ExtResource("3_x642f")
+draw_pass_1 = ExtResource("3_yve16")
+
+[node name="BurnParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37104e-08, -0.999977, -0.00677183, 1, -4.37114e-08, 0, -2.96006e-10, -0.00677183, 0.999977, 0, 0, 0)
+emitting = false
+amount = 300
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.97
+randomness = 1.0
+process_material = ExtResource("5_sp724")
 draw_pass_1 = ExtResource("3_yve16")
