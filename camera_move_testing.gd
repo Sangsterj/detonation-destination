@@ -1,0 +1,41 @@
+extends "res://camera_base.gd"
+# script to move the camera position with WASD, space, shift, and right click to move the camera rotation
+# made for testing purposes, do not use in final product
+
+
+var move_speed = 4
+var init_click_pos: Vector2
+var clicking_before = false
+var delta_smooth: Vector2 = Vector2(0, 0)
+var smoothing = 29
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	base_camera_process()  # important !!
+	
+	# movement
+	var lr = (int(Input.is_action_pressed("right"))-int(Input.is_action_pressed("left")))
+	var fb = (int(Input.is_action_pressed("backward"))-int(Input.is_action_pressed("forward")))
+	var ud = (int(Input.is_action_pressed("up"))-int(Input.is_action_pressed("down")))
+	var delta_mouse = Vector2(0, 0)
+	position += (ud*Vector3.UP+fb*transform.basis.z+lr*transform.basis.x)*delta*move_speed
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		if not clicking_before:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			init_click_pos = get_viewport().get_mouse_position()
+		else:
+			delta_mouse = get_viewport().get_mouse_position() - init_click_pos
+			rotation.y -= delta_smooth.x*delta
+			rotation.x -= delta_smooth.y*delta
+		get_viewport().warp_mouse(init_click_pos)
+	else:
+		if clicking_before:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	delta_smooth = delta_smooth*(1-delta*smoothing) + delta*delta_mouse*smoothing
+	clicking_before = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
