@@ -28,3 +28,13 @@ func explode():
 	var exp: GPUParticles3D = $ExplosionParticles
 	exp.emitting = true
 	exp.position = rb.position
+	
+func burn():
+	exploded = true
+	var rb: RigidBody3D = $RigidBody3D
+	rb.freeze = true
+	rb.visible = false
+	rb.collision_layer = 0
+	var exp: GPUParticles3D = $BurnParticles
+	exp.emitting = true
+	exp.position = rb.position

@@ -1,0 +1,28 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://cw64lf44txoat"]
+
+[sub_resource type="Curve" id="Curve_ivpld"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.43956), -0.928459, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6dtup"]
+curve = SubResource("Curve_ivpld")
+
+[resource]
+lifetime_randomness = 1.0
+particle_flag_rotate_y = true
+emission_shape_offset = Vector3(-0.5, 0, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+spread = 12.0
+initial_velocity_min = 7.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, -19, 0)
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_6dtup")
+color = Color(1.15514e-06, 0.800625, 0.930695, 1)
+collision_mode = 1
+collision_friction = 0.5
+collision_bounce = 0.0
