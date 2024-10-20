@@ -5,5 +5,4 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_pj42e")
-
-[node name="lav-testing" parent="." instance=ExtResource("2_ww8j1")]
+scene = ExtResource("2_ww8j1")

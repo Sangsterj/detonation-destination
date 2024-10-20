@@ -7,6 +7,7 @@ var weapon = 1
 const FLAMETHROWER_PER_SECOND = 12
 var flamethrower_cooldown = 0
 const BASE_FOV = 100
+var delta_mouse = Vector3(0, 0, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,6 +49,7 @@ func base_camera_process(delta):
 				if intersect.collider.get_parent().has_meta("destructable"):
 					if (1.0/FLAMETHROWER_PER_SECOND) < flamethrower_cooldown:
 						flamethrower_cooldown = 0
+					
 						intersect.collider.get_parent().burn()
 		
 		if Data.current_weapon == Data.Weapon.PUSH:
