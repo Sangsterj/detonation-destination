@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bahlkr5berhol"]
+[gd_scene load_steps=3 format=3 uid="uid://cih7w1pjcp0pg"]
 
 [ext_resource type="Script" path="res://red_laser.gd" id="1_hfjf1"]
 
@@ -16,5 +16,5 @@ emission_energy_multiplier = 3.35
 script = ExtResource("1_hfjf1")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(-400.176, -3.01992e-09, 0, 6.04249e-05, -0.02, 0, 0, 0, 0.02, 0, 0, 0)
+transform = Transform3D(-400.176, -3.01992e-09, 0, 6.04249e-05, -0.02, 0, 0, 0, 0.02, 0, 0.130559, 0)
 material = SubResource("StandardMaterial3D_hdxw7")
