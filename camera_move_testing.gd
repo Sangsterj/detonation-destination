@@ -17,7 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	base_camera_process()  # important !!
+	base_camera_process(delta)  # important !!
 	
 	# movement
 	var lr = (int(Input.is_action_pressed("right"))-int(Input.is_action_pressed("left")))

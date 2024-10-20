@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://5evsajafgnoj"]
+[gd_scene load_steps=2 format=3 uid="uid://5evsajafgnoj"]
+
+[ext_resource type="AudioStream" uid="uid://bsj5syr33jwrr" path="res://assets/sounds/titlescreen-bg.mp3" id="1_esf0v"]
 
 [node name="Titlescreen" type="Node3D"]
+
+[node name="TitlescreenMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_esf0v")
+volume_db = 3.962
+autoplay = true
+panning_strength = 0.0

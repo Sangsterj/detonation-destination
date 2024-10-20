@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bahlkr5berhol"]
+
+[ext_resource type="Script" path="res://red_laser.gd" id="1_hfjf1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdxw7"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0.0923568, 0.044103, 1)
+metallic = 0.74
+metallic_specular = 0.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.958712, 0, 0.259097, 1)
+emission_energy_multiplier = 3.35
+
+[node name="RedLaser" type="Node3D"]
+script = ExtResource("1_hfjf1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(-400.176, -3.01992e-09, 0, 6.04249e-05, -0.02, 0, 0, 0, 0.02, 0, 0, 0)
+material = SubResource("StandardMaterial3D_hdxw7")

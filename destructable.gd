@@ -10,7 +10,7 @@ var explode_anim = 0.0
 # Node3D named Sounds
 
 const DEFAULT_EXPLODE_SOUND = "res://assets/sounds/laser-explosion-glass.mp3"
-const DEFAULT_BURN_SOUND = "res://assets/sounds/laser-explosion-rubble.mp3"  # todo change
+const DEFAULT_BURN_SOUND = "res://assets/sounds/laser-explosion-rubble.mp3"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,7 +34,7 @@ func do_sound(sound_path=DEFAULT_EXPLODE_SOUND, volume=1):
 	new_sound.volume_db = volume
 	new_sound.pitch_scale = randf()*0.4+0.8
 	$Sounds.add_child(new_sound)
-	new_sound.global_position = global_position
+	new_sound.global_position = $RigidBody3D.global_position
 	new_sound.play()
 
 
@@ -61,3 +61,13 @@ func burn(sound_path=DEFAULT_BURN_SOUND):
 	var exp: GPUParticles3D = $BurnParticles
 	exp.emitting = true
 	exp.position = rb.position
+
+
+func push(pos: Vector3):
+	var intensity = randi_range(1, 6)
+	do_sound(str("res://assets/sounds/thump-", intensity, ".mp3"))
+	var push_force = intensity*1.3+6
+	var dir = (pos - position).normalized()*-1
+	dir.y = abs(dir.y)+1
+	$RigidBody3D.apply_impulse(dir*push_force)
+	$RigidBody3D.apply_torque(Vector3(randf()*10-5,randf()*10-5,randf()*10-5))

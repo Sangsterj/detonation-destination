@@ -7,7 +7,8 @@ extends Node
 enum Weapon {
 	FLAMETHROWER,
 	CLICK,
-	EXPLOSIVE
+	EXPLOSIVE,
+	PUSH
 }
 
 var current_weapon = Weapon.CLICK
@@ -20,6 +21,8 @@ func weapon_name(weapon):
 			return "Cursor"
 		Weapon.EXPLOSIVE:
 			return "Bomb"
+		Weapon.PUSH:
+			return "Push"
 	return "UNKNOWN WEAPON"
 
 # screen shake
