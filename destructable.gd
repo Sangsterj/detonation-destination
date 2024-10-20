@@ -66,8 +66,8 @@ func burn(sound_path=DEFAULT_BURN_SOUND):
 func push(pos: Vector3):
 	var intensity = randi_range(1, 6)
 	do_sound(str("res://assets/sounds/thump-", intensity, ".mp3"))
-	var push_force = intensity*1.3+6
-	var dir = (pos - position).normalized()*-1
-	dir.y = abs(dir.y)+1
+	var push_force = intensity*1.3+9
+	var dir = (pos - $RigidBody3D.position).normalized()*-1
+	dir.y = abs(dir.y)
 	$RigidBody3D.apply_impulse(dir*push_force)
 	$RigidBody3D.apply_torque(Vector3(randf()*10-5,randf()*10-5,randf()*10-5))

@@ -40,9 +40,27 @@ func base_camera_process(delta):
 		if Data.current_weapon == Data.Weapon.CLICK:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				if not mouse_pressed_prev:
-					if intersect.collider.get_parent().has_meta("destructable"):
-						intersect.collider.get_parent().explode()
-						# todo: this should also push (explode?) nearby cubes
+					var original = intersect.collider
+					if original.get_parent().has_meta("destructable"):
+						var N = 200
+						var M = 4
+						for j in range(M+1):
+							for i in range(N):
+								var raycast_start_push = original.global_position
+								var raycast_end_push = original.global_position+Vector3(
+									cos(12.0*PI*(float(i)/N)), float(j)/M*3-1.5, sin(12.0*PI*(float(i)/N))
+								)
+								var query_push = PhysicsRayQueryParameters3D.create(
+									raycast_start_push, raycast_end_push)
+								query_push.exclude = [original.get_rid()]
+								var intersect_push = space_state.intersect_ray(query_push)
+								if intersect_push.size() > 0:
+									if intersect_push.collider.get_parent().has_meta("destructable"):
+										var other = intersect_push.collider
+										var dist = original.position.distance_to(other.global_position)
+										other.apply_impulse((other.global_position-raycast_start_push)*0.2/(dist))
+								# todo: this should also push (explode?) nearby cubes
+						original.get_parent().explode()
 						
 		if Data.current_weapon == Data.Weapon.FLAMETHROWER:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -56,7 +74,7 @@ func base_camera_process(delta):
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				if not mouse_pressed_prev:
 					if intersect.collider.get_parent().has_meta("destructable"):
-						intersect.collider.get_parent().push(self.position)
+						intersect.collider.get_parent().push(position)
 						
 	
 	mouse_pressed_prev = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)

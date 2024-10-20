@@ -19,4 +19,4 @@ offset_bottom = -20.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_xkolf")
 theme_override_font_sizes/font_size = 24
-text = "Current weapon"
+text = "Current Weapon: Cursor"
