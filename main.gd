@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("reset"):
+	if Input.is_action_just_pressed("reset"):
 		get_tree().call_group("Scenes", "queue_free")
 		var lav_testing = scene.instantiate()
 		add_child(lav_testing)
