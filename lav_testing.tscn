@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b15jo4cwp5sq5"]
+[gd_scene load_steps=10 format=3 uid="uid://b15jo4cwp5sq5"]
 
 [ext_resource type="Script" path="res://camera_move_testing.gd" id="1_4j173"]
 [ext_resource type="PackedScene" uid="uid://dfy0mtas2a5f3" path="res://cube.tscn" id="1_ntlfe"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="2_ixf85"]
-[ext_resource type="Material" uid="uid://cw64lf44txoat" path="res://flame_particles.tres" id="2_j2toa"]
 [ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="3_elk4y"]
-[ext_resource type="ArrayMesh" uid="uid://d2wv5oin3c8ur" path="res://assets/octahedron.obj" id="3_ep2qe"]
 [ext_resource type="PackedScene" path="res://delete_destructables_zone.tscn" id="5_q0hm0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3unwm"]
@@ -35,12 +33,6 @@ transform = Transform3D(0.824265, 0.181561, -0.536306, 0, 0.947194, 0.320663, 0.
 environment = SubResource("Environment_vgpoq")
 fov = 90.02
 script = ExtResource("1_4j173")
-
-[node name="FlamethrowerFire" type="GPUParticles3D" parent="Camera3D"]
-transform = Transform3D(1, -1.49012e-08, 5.96046e-08, 0, 1, -2.98023e-08, -2.98023e-08, -1.49012e-08, 1, 0, 0, 0)
-emitting = false
-process_material = ExtResource("2_j2toa")
-draw_pass_1 = ExtResource("3_ep2qe")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.737596, 0.618904, 0.27002, 0, -0.399885, 0.916565, 0.675243, -0.676055, -0.294954, 0, 4.80135, 0)
