@@ -25,7 +25,7 @@ func weapon_name(weapon):
 		Weapon.PUSH:
 			return "Push"
 		Weapon.NUKE:
-			return "Nuke"
+			return "Orbital Strike Cannon"
 	return "UNKNOWN WEAPON"
 
 # screen shake
