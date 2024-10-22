@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv6sc4rhd6e52"]
+
+[ext_resource type="Environment" uid="uid://cp4r3tj0m5ceu" path="res://camera_env.tres" id="1_q2euk"]
+[ext_resource type="Script" path="res://camera_move_testing.gd" id="2_jac65"]
+[ext_resource type="Material" uid="uid://cw64lf44txoat" path="res://flame_particles.tres" id="3_ix7w6"]
+[ext_resource type="ArrayMesh" uid="uid://d2wv5oin3c8ur" path="res://assets/octahedron.obj" id="4_2xgay"]
+
+[node name="Camera" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.824265, 0.181561, -0.536305, 0, 0.947193, 0.320663, 0.566205, -0.264311, 0.780738, -5.06883, 7.07788, 6.17521)
+environment = ExtResource("1_q2euk")
+fov = 90.02
+script = ExtResource("2_jac65")
+
+[node name="FlamethrowerFire" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, -1.49012e-08, 5.96046e-08, 0, 1, -2.98023e-08, -2.98023e-08, -1.49012e-08, 1, 0, 0, 0)
+emitting = false
+process_material = ExtResource("3_ix7w6")
+draw_pass_1 = ExtResource("4_2xgay")
