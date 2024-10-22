@@ -99,7 +99,8 @@ func base_camera_process(delta):
 					nuke.position.x = pos.x
 					nuke.position.y = pos.y
 					nuke.position.z = pos.z
-					await get_tree().create_timer(1.0).timeout
+					mouse_pressed_prev = 1
+					await get_tree().create_timer(0.5).timeout
 					get_tree().call_group("NukeHitbox","queue_free")
 					
 	

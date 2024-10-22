@@ -39,6 +39,8 @@ func do_sound(sound_path=DEFAULT_EXPLODE_SOUND, volume=1):
 
 
 func explode(sound_path=DEFAULT_EXPLODE_SOUND):
+	if exploded:
+		return
 	do_sound(sound_path)
 	Data.shake_screen(12)
 	exploded = true
@@ -51,6 +53,8 @@ func explode(sound_path=DEFAULT_EXPLODE_SOUND):
 	exp.position = rb.position
 	
 func burn(sound_path=DEFAULT_BURN_SOUND):
+	if exploded:
+		return
 	do_sound(sound_path, -10)
 	Data.shake_screen(7)
 	exploded = true
