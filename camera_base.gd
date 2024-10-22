@@ -8,6 +8,9 @@ const FLAMETHROWER_PER_SECOND = 12
 var flamethrower_cooldown = 0
 const BASE_FOV = 100
 var delta_mouse = Vector3(0, 0, 0)
+var Nuke_Per_Second = 1
+var NukeArea = load("res://delete_destructables_zone.tscn")
+var NukeCooldown = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +18,7 @@ func _ready() -> void:
 
 
 func _process(delta) -> void:
+	
 	base_camera_process(delta)
 
 
@@ -30,6 +34,8 @@ func base_camera_process(delta):
 		Data.current_weapon = Data.Weapon.FLAMETHROWER
 	if Input.is_action_pressed("push"):
 		Data.current_weapon = Data.Weapon.PUSH
+	if Input.is_action_pressed("nuke"):
+		Data.current_weapon = Data.Weapon.NUKE
 	
 	# destroy destructables
 	var cam = get_viewport().get_camera_3d()
@@ -40,6 +46,7 @@ func base_camera_process(delta):
 	var query = PhysicsRayQueryParameters3D.create(raycast_origin, raycast_end)
 	var intersect = space_state.intersect_ray(query)
 	flamethrower_cooldown += delta
+	NukeCooldown += delta
 	if intersect.size() > 0:
 		if Data.current_weapon == Data.Weapon.CLICK:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -80,6 +87,27 @@ func base_camera_process(delta):
 				if not mouse_pressed_prev:
 					if intersect.collider.get_parent().has_meta("destructable"):
 						intersect.collider.get_parent().push(position)
+						
+						
+						
+		if Data.current_weapon == Data.Weapon.NUKE:
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+				if not mouse_pressed_prev:
+					if (1.5/Nuke_Per_Second) < NukeCooldown:
+						NukeCooldown = 0
+				
+            var pos = intersect.position
+            var nuke = NukeArea.instantiate()
+            get_parent().add_child(nuke)
+            nuke.IsANuke = true
+            nuke.add_to_group("NukeHitbox")
+					
+            nuke.position.x = pos.x
+            nuke.position.y = pos.y
+            nuke.position.z = pos.z
+            mouse_pressed_prev = 1
+            await get_tree().create_timer(0.5).timeout
+            get_tree().call_group("NukeHitbox","queue_free")
 						
 	
 	mouse_pressed_prev = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)

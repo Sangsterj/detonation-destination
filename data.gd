@@ -8,7 +8,8 @@ enum Weapon {
 	FLAMETHROWER,
 	CLICK,
 	EXPLOSIVE,
-	PUSH
+	PUSH,
+	NUKE
 }
 
 var current_weapon = Weapon.CLICK
@@ -23,6 +24,8 @@ func weapon_name(weapon):
 			return "Bomb"
 		Weapon.PUSH:
 			return "Push"
+		Weapon.NUKE:
+			return "Orbital Strike Cannon"
 	return "UNKNOWN WEAPON"
 
 # screen shake
