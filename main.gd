@@ -5,6 +5,7 @@ extends Node
 func _ready() -> void:
 	var lav_testing = scene.instantiate()
 	add_child(lav_testing)
+	$"BG Music".play()
 	pass # Replace with function body.
 
 
