@@ -14,6 +14,10 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+func _process(delta) -> void:
+	base_camera_process(delta)
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func base_camera_process(delta):
 	# screen shake
@@ -48,7 +52,7 @@ func base_camera_process(delta):
 							for i in range(N):
 								var raycast_start_push = original.global_position
 								var raycast_end_push = original.global_position+Vector3(
-									cos(12.0*PI*(float(i)/N)), float(j)/M*3-1.5, sin(12.0*PI*(float(i)/N))
+									40*cos(2.0*PI*(float(i)/N)), float(j)/M*3-1.5, 40*sin(2.0*PI*(float(i)/N))
 								)
 								var query_push = PhysicsRayQueryParameters3D.create(
 									raycast_start_push, raycast_end_push)
@@ -58,7 +62,8 @@ func base_camera_process(delta):
 									if intersect_push.collider.get_parent().has_meta("destructable"):
 										var other = intersect_push.collider
 										var dist = original.position.distance_to(other.global_position)
-										other.apply_impulse((other.global_position-raycast_start_push)*0.2/(dist))
+										var deltapos = (other.global_position-raycast_start_push)
+										other.apply_impulse(deltapos*minf(0.08/(dist), 1))
 								# todo: this should also push (explode?) nearby cubes
 						original.get_parent().explode()
 						

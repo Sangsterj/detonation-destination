@@ -1,0 +1,15 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://cp4r3tj0m5ceu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3unwm"]
+
+[sub_resource type="Sky" id="Sky_1femj"]
+sky_material = SubResource("ProceduralSkyMaterial_3unwm")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 1.71
+sky = SubResource("Sky_1femj")
+sky_custom_fov = 85.3
+ambient_light_color = Color(0.560134, 0.409155, 0.764157, 1)
+ambient_light_energy = 12.12
+adjustment_contrast = 1.32

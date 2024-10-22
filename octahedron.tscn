@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cypfvohgfi7vm"]
+
+[ext_resource type="Script" path="res://octahedron.gd" id="1_u7q2h"]
+[ext_resource type="ArrayMesh" uid="uid://d2wv5oin3c8ur" path="res://assets/octahedron.obj" id="2_sub32"]
+[ext_resource type="Material" uid="uid://btkd1w4stypjd" path="res://assets/destructible.material" id="3_jrvhu"]
+[ext_resource type="Material" uid="uid://yhubwyclbpxu" path="res://explosion_particles.tres" id="4_6nba6"]
+[ext_resource type="Material" uid="uid://w452d86uuh1x" path="res://burn_particles.tres" id="5_w3l7u"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_odkkc"]
+points = PackedVector3Array(1, 0, 0, 0, 0, 1, -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -1, 0)
+
+[node name="Octahedron" type="Node3D"]
+script = ExtResource("1_u7q2h")
+metadata/destructable = true
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_odkkc")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="RigidBody3D"]
+mesh = ExtResource("2_sub32")
+material = ExtResource("3_jrvhu")
+
+[node name="ExplosionParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+emitting = false
+amount = 600
+lifetime = 1.4
+one_shot = true
+explosiveness = 0.97
+randomness = 1.0
+process_material = ExtResource("4_6nba6")
+draw_pass_1 = ExtResource("2_sub32")
+
+[node name="BurnParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37104e-08, -0.999977, -0.00677183, 1, -4.37114e-08, 0, -2.96006e-10, -0.00677183, 0.999977, 0, 0, 0)
+emitting = false
+amount = 300
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.97
+randomness = 1.0
+process_material = ExtResource("5_w3l7u")
+draw_pass_1 = ExtResource("2_sub32")
+
+[node name="Sounds" type="Node3D" parent="."]

@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://5evsajafgnoj"]
+[gd_scene load_steps=9 format=3 uid="uid://5evsajafgnoj"]
 
 [ext_resource type="AudioStream" uid="uid://bsj5syr33jwrr" path="res://assets/sounds/titlescreen-bg.mp3" id="1_esf0v"]
+[ext_resource type="Environment" uid="uid://cp4r3tj0m5ceu" path="res://camera_env.tres" id="2_g7nlu"]
+[ext_resource type="Script" path="res://camera_base.gd" id="2_o46ny"]
+[ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="4_6wxhk"]
+[ext_resource type="PackedScene" uid="uid://dfy0mtas2a5f3" path="res://cube.tscn" id="5_tfxc3"]
+[ext_resource type="Script" path="res://floating_cube_titlescreen.gd" id="6_6278i"]
+[ext_resource type="Shader" path="res://shaders/dither.gdshader" id="7_ie4sh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6g6w"]
+shader = ExtResource("7_ie4sh")
+shader_parameter/SCREEN_WIDTH = 1152.0
+shader_parameter/COLOR_FACTOR = 10.0
+shader_parameter/DITHERING_STRENTH = 0.048
 
 [node name="Titlescreen" type="Node3D"]
 
@@ -9,3 +21,37 @@ stream = ExtResource("1_esf0v")
 volume_db = 3.962
 autoplay = true
 panning_strength = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 3.5)
+environment = ExtResource("2_g7nlu")
+fov = 100.0
+script = ExtResource("2_o46ny")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.737596, 0.618904, 0.270019, 0, -0.399885, 0.916565, 0.675243, -0.676055, -0.294953, 0, 36.9107, 0)
+shadow_enabled = true
+shadow_blur = 10.0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+
+[node name="PhysicalObjects" type="Node3D" parent="."]
+
+[node name="platform" parent="PhysicalObjects" instance=ExtResource("4_6wxhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -2)
+size_x = 12
+size_z = 6
+
+[node name="FloatingCubeSandbox" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -2.5)
+script = ExtResource("6_6278i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_y6g6w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
