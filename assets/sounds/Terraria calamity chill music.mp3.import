@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://br87eeit38w1u"
+path="res://.godot/imported/Terraria calamity chill music.mp3-0449ff8972656332e6fe1b1683583039.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Terraria calamity chill music.mp3"
+dest_files=["res://.godot/imported/Terraria calamity chill music.mp3-0449ff8972656332e6fe1b1683583039.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

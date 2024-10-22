@@ -1,8 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://h8aus26k5hfr"]
+[gd_scene load_steps=4 format=3 uid="uid://h8aus26k5hfr"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_pj42e"]
 [ext_resource type="PackedScene" uid="uid://b15jo4cwp5sq5" path="res://lav_testing.tscn" id="2_ww8j1"]
+[ext_resource type="AudioStream" uid="uid://br87eeit38w1u" path="res://assets/sounds/Terraria calamity chill music.mp3" id="3_ckbha"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_pj42e")
 scene = ExtResource("2_ww8j1")
+
+[node name="BG Music" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_ckbha")
