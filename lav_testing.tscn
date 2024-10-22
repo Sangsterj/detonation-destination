@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b15jo4cwp5sq5"]
 
-[ext_resource type="PackedScene" uid="uid://bv6sc4rhd6e52" path="res://camera.tscn" id="1_jiv8v"]
+[ext_resource type="PackedScene" path="res://camera.tscn" id="1_jiv8v"]
 [ext_resource type="PackedScene" uid="uid://dfy0mtas2a5f3" path="res://cube.tscn" id="1_ntlfe"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="2_ixf85"]
 [ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="3_elk4y"]

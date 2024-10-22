@@ -96,18 +96,18 @@ func base_camera_process(delta):
 					if (1.5/Nuke_Per_Second) < NukeCooldown:
 						NukeCooldown = 0
 				
-            var pos = intersect.position
-            var nuke = NukeArea.instantiate()
-            get_parent().add_child(nuke)
-            nuke.IsANuke = true
-            nuke.add_to_group("NukeHitbox")
+			var pos = intersect.position
+			var nuke = NukeArea.instantiate()
+			get_parent().add_child(nuke)
+			nuke.IsANuke = true
+			nuke.add_to_group("NukeHitbox")
 					
-            nuke.position.x = pos.x
-            nuke.position.y = pos.y
-            nuke.position.z = pos.z
-            mouse_pressed_prev = 1
-            await get_tree().create_timer(0.5).timeout
-            get_tree().call_group("NukeHitbox","queue_free")
+			nuke.position.x = pos.x
+			nuke.position.y = pos.y
+			nuke.position.z = pos.z
+			mouse_pressed_prev = 1
+			await get_tree().create_timer(0.5).timeout
+			get_tree().call_group("NukeHitbox","queue_free")
 						
 	
 	mouse_pressed_prev = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
