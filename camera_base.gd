@@ -10,6 +10,7 @@ const BASE_FOV = 100
 var delta_mouse = Vector3(0, 0, 0)
 var Nuke_Per_Second = 1
 var NukeArea = load("res://delete_destructables_zone.tscn")
+var newcube = load("res://cube.tscn")
 var NukeCooldown = 1.5
 
 # Called when the node enters the scene tree for the first time.
@@ -36,6 +37,8 @@ func base_camera_process(delta):
 		Data.current_weapon = Data.Weapon.PUSH
 	if Input.is_action_pressed("nuke"):
 		Data.current_weapon = Data.Weapon.NUKE
+	if Input.is_action_pressed("cube"):
+		Data.current_weapon = Data.Weapon.BOX
 	
 	# destroy destructables
 	var cam = get_viewport().get_camera_3d()
@@ -112,5 +115,17 @@ func base_camera_process(delta):
 							await get_tree().create_timer(0.5).timeout
 							get_tree().call_group("NukeHitbox","queue_free")
 							
+	if Data.current_weapon == Data.Weapon.BOX:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			if not mouse_pressed_prev:
+					var cpos = self.position
+					var Cube = newcube.instantiate()
+					get_parent().add_child(Cube)
+					Cube.position.x = cpos.x
+					Cube.position.y = cpos.y - 2 
+					Cube.position.z = cpos.z
+					mouse_pressed_prev = 1
+					Cube.push(position)
+					
 	
 	mouse_pressed_prev = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)

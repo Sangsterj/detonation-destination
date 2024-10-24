@@ -3,6 +3,7 @@ var HaveWeaponFlamethrower = false
 var HaveWeaponPush = false
 var HaveWeaponNuke = false
 var HaveWeaponExplosive = false
+var HaveWeaponBox = false
 var WeaponUnlock = 0
 
 # this script is a "global" script, meaning it is always loaded, even between scene changes
@@ -13,7 +14,7 @@ var WeaponUnlock = 0
 enum Weapon {
 	FLAMETHROWER,
 	CLICK,
-	EXPLOSIVE,
+	BOX,
 	PUSH,
 	NUKE
 }
@@ -43,11 +44,8 @@ func weapon_name(weapon):
 				return "Weapon not aquired yet"
 		Weapon.CLICK:
 			return "Cursor"
-		Weapon.EXPLOSIVE:
-			if HaveWeaponExplosive == true:
-				return "Bomb"
-			else :
-				return "Weapon not aquired yet"
+		Weapon.BOX:
+			return "Box Cannon"
 		Weapon.PUSH:
 			if HaveWeaponPush == true:
 				return "Push"
