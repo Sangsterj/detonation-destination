@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv6sc4rhd6e52"]
+[gd_scene load_steps=5 format=3 uid="uid://hkmt7xcxn7na"]
 
 [ext_resource type="Environment" uid="uid://cp4r3tj0m5ceu" path="res://camera_env.tres" id="1_q2euk"]
 [ext_resource type="Script" path="res://camera_move_testing.gd" id="2_jac65"]
