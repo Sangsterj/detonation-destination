@@ -46,10 +46,12 @@ size_z = 6
 [node name="FloatingCubeStart" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -2.5)
 script = ExtResource("6_6278i")
+metadata/action = "start"
 
 [node name="FloatingCubeExit" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -2.5)
 script = ExtResource("6_6278i")
+metadata/action = "exit"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -91,3 +93,6 @@ offset_bottom = 132.0
 theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 100
 text = "Detonation Destination"
+
+[connection signal="on_destroy" from="PhysicalObjects/FloatingCubeStart" to="PhysicalObjects/FloatingCubeStart" method="_on_on_destroy"]
+[connection signal="on_destroy" from="PhysicalObjects/FloatingCubeExit" to="PhysicalObjects/FloatingCubeExit" method="_on_on_destroy"]
