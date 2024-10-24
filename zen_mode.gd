@@ -1,6 +1,6 @@
 extends Node3D
 
-var NukeCooldown = 1.5
+const cube_scene = preload("res://cube.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,6 +9,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$CanvasLayer/CurrrentWeapon.text = str("Current Weapon: ", Data.weapon_name(Data.current_weapon))
-	NukeCooldown -= delta
-	$CanvasLayer/OrbitalStrikeCooldown.value = NukeCooldown * 100
+	pass

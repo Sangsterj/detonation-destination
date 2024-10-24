@@ -2,7 +2,7 @@
 extends StaticBody3D
 
 @export_range(1, 20) var size_x: int = 1
-@export_range(1, 5) var size_y: int = 1
+@export_range(1, 20) var size_y: int = 1
 @export_range(1, 20) var size_z: int = 1
 
 
