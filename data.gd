@@ -23,7 +23,6 @@ var current_weapon = Weapon.CLICK
 func Unlock():
 
 		if HaveWeaponFlamethrower == false:
-			
 			HaveWeaponFlamethrower = true
 		elif HaveWeaponPush == false:
 			HaveWeaponPush = true
