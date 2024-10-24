@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://w452d86uuh1x" path="res://burn_particles.tres" id="5_sp724"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_silya"]
+resource_local_to_scene = true
 
 [node name="Cube" type="Node3D"]
 script = ExtResource("1_oxnf8")

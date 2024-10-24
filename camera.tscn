@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv6sc4rhd6e52"]
+[gd_scene load_steps=6 format=3 uid="uid://hkmt7xcxn7na"]
 
 [ext_resource type="Environment" uid="uid://cp4r3tj0m5ceu" path="res://camera_env.tres" id="1_q2euk"]
 [ext_resource type="Script" path="res://camera_move_testing.gd" id="2_jac65"]
 [ext_resource type="Material" uid="uid://cw64lf44txoat" path="res://flame_particles.tres" id="3_ix7w6"]
 [ext_resource type="ArrayMesh" uid="uid://d2wv5oin3c8ur" path="res://assets/octahedron.obj" id="4_2xgay"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_16bi6"]
 
 [node name="Camera" type="Node3D"]
 
@@ -12,9 +14,19 @@ transform = Transform3D(0.824265, 0.181561, -0.536305, 0, 0.947193, 0.320663, 0.
 environment = ExtResource("1_q2euk")
 fov = 90.02
 script = ExtResource("2_jac65")
+metadata/_edit_group_ = true
 
 [node name="FlamethrowerFire" type="GPUParticles3D" parent="Camera3D"]
 transform = Transform3D(1, -1.49012e-08, 5.96046e-08, 0, 1, -2.98023e-08, -2.98023e-08, -1.49012e-08, 1, 0, 0, 0)
 emitting = false
 process_material = ExtResource("3_ix7w6")
 draw_pass_1 = ExtResource("4_2xgay")
+
+[node name="CameraPhysics" type="Area3D" parent="Camera3D"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/CameraPhysics"]
+shape = SubResource("SphereShape3D_16bi6")
+
+[connection signal="body_entered" from="Camera3D/CameraPhysics" to="Camera3D" method="_on_camera_physics_body_entered"]
+[connection signal="body_exited" from="Camera3D/CameraPhysics" to="Camera3D" method="_on_camera_physics_body_exited"]

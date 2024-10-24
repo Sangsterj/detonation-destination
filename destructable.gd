@@ -2,6 +2,7 @@ extends Node3D
 
 var exploded = false
 var explode_anim = 0.0
+signal on_destroy
 
 # every destructable needs these children with these names:
 # RigidBody3D named RigidBody3D
@@ -24,6 +25,8 @@ func destructable_process(delta: float) -> void:
 		explode_anim += delta
 		var rb: RigidBody3D = $RigidBody3D
 		if explode_anim > 2.5:
+			if is_in_group("WeaponBox"):
+				Data.Unlock()
 			queue_free()
 		return
 
@@ -41,6 +44,7 @@ func do_sound(sound_path=DEFAULT_EXPLODE_SOUND, volume=1):
 func explode(sound_path=DEFAULT_EXPLODE_SOUND):
 	if exploded:
 		return
+	on_destroy.emit()
 	do_sound(sound_path)
 	Data.shake_screen(12)
 	exploded = true
@@ -56,6 +60,7 @@ func burn(sound_path=DEFAULT_BURN_SOUND):
 	if exploded:
 		return
 	do_sound(sound_path, -10)
+	on_destroy.emit()
 	Data.shake_screen(7)
 	exploded = true
 	var rb: RigidBody3D = $RigidBody3D
@@ -70,6 +75,7 @@ func burn(sound_path=DEFAULT_BURN_SOUND):
 func push(pos: Vector3):
 	var intensity = randi_range(1, 6)
 	do_sound(str("res://assets/sounds/thump-", intensity, ".mp3"))
+	on_destroy.emit()
 	var push_force = intensity*1.3+9
 	var dir = (pos - $RigidBody3D.position).normalized()*-1
 	dir.y = abs(dir.y)

@@ -1,4 +1,11 @@
 extends Node
+var HaveWeaponFlamethrower = false
+var HaveWeaponPush = false
+var HaveWeaponNuke = false
+var HaveWeaponExplosive = false
+var HaveWeaponBox = false
+var WeaponUnlock = 0
+
 # this script is a "global" script, meaning it is always loaded, even between scene changes
 # this can be found in the project > project settings > globals tab
 
@@ -7,25 +14,48 @@ extends Node
 enum Weapon {
 	FLAMETHROWER,
 	CLICK,
-	EXPLOSIVE,
+	BOX,
 	PUSH,
 	NUKE
 }
 
 var current_weapon = Weapon.CLICK
 
+func Unlock():
+
+		if HaveWeaponFlamethrower == false:
+			HaveWeaponFlamethrower = true
+		elif HaveWeaponPush == false:
+			HaveWeaponPush = true
+		elif HaveWeaponNuke == false:
+			HaveWeaponNuke = true
+		else:
+			print("No Weapons left to aquire")
+
+
+
+
 func weapon_name(weapon):
 	match weapon:
 		Weapon.FLAMETHROWER:
-			return "Flamethrower"
+			if HaveWeaponFlamethrower == true:
+				return "Flamethrower"
+			else :
+				return "Weapon not aquired yet"
 		Weapon.CLICK:
 			return "Cursor"
-		Weapon.EXPLOSIVE:
-			return "Bomb"
+		Weapon.BOX:
+			return "Box Cannon"
 		Weapon.PUSH:
-			return "Push"
+			if HaveWeaponPush == true:
+				return "Push"
+			else :
+				return "Weapon not aquired yet"
 		Weapon.NUKE:
-			return "Orbital Strike Cannon"
+			if HaveWeaponNuke == true:
+				return "Orbital Stike Cannon"
+			else :
+				return "Weapon not aquired yet"
 	return "UNKNOWN WEAPON"
 
 # screen shake

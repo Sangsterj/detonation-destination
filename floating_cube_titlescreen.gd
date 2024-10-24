@@ -22,8 +22,18 @@ func _process(delta: float) -> void:
 	$RigidBody3D.rotation.x = -cos(time)*0.2
 	$RigidBody3D.rotation.z = -sin(time)*0.2
 	var box : BoxShape3D = $RigidBody3D/CollisionShape3D.shape
-	box.size.x = 1.6
-	box.size.y = 1.6
-	box.size.z = 1.6
+	box.size.x = 2.5
+	box.size.y = 2.5
+	box.size.z = 2.5
 
 # todo: do something on destroyed
+
+
+func _on_on_destroy() -> void:
+	if get_meta("action") == "start":
+		await get_tree().create_timer(0.6).timeout
+		get_tree().change_scene_to_file("res://level_1.tscn")
+	print(get_meta("action"))
+	if get_meta("action") == "exit":
+		print("qwd")
+		get_tree().quit()
