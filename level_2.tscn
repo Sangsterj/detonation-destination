@@ -34,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="platforms" type="Node3D" parent="."]
 
@@ -69,6 +70,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
 
 [node name="cube4" parent="destructables" instance=ExtResource("5_y3ewk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 10)
+
+[node name="cube5" parent="destructables" instance=ExtResource("5_y3ewk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="cube6" parent="destructables" instance=ExtResource("5_y3ewk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 0)
+
+[node name="cube7" parent="destructables" instance=ExtResource("5_y3ewk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 10)
+
+[node name="cube8" parent="destructables" instance=ExtResource("5_y3ewk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 10)
 
 [node name="delete-destructables-zone" parent="." instance=ExtResource("6_nypf1")]
 transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -4, 0)
