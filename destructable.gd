@@ -24,6 +24,8 @@ func destructable_process(delta: float) -> void:
 		explode_anim += delta
 		var rb: RigidBody3D = $RigidBody3D
 		if explode_anim > 2.5:
+			if is_in_group("WeaponBox"):
+				Data.Unlock()
 			queue_free()
 		return
 
