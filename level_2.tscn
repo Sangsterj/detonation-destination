@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3hhe0utl42nm"]
+
+[ext_resource type="PackedScene" uid="uid://bv6sc4rhd6e52" path="res://camera.tscn" id="1_51rqt"]
+[ext_resource type="PackedScene" uid="uid://cjns13k2ctq5a" path="res://ui.tscn" id="2_4qsk8"]
+[ext_resource type="Shader" path="res://shaders/dither.gdshader" id="3_vy2td"]
+[ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="4_6nj66"]
+[ext_resource type="PackedScene" uid="uid://dfy0mtas2a5f3" path="res://cube.tscn" id="5_y3ewk"]
+[ext_resource type="PackedScene" uid="uid://dbvvnfyw0y6xy" path="res://delete_destructables_zone.tscn" id="6_nypf1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8o14"]
+shader = ExtResource("3_vy2td")
+shader_parameter/SCREEN_WIDTH = 1152.0
+shader_parameter/COLOR_FACTOR = 10.0
+shader_parameter/DITHERING_STRENTH = 0.048
+
+[node name="Level2" type="Node3D"]
+
+[node name="Camera" parent="." instance=ExtResource("1_51rqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.272, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.737596, 0.618904, 0.270019, 0, -0.399885, 0.916565, 0.675243, -0.676055, -0.294953, 0, 34.6387, 0)
+shadow_enabled = true
+shadow_blur = 10.0
+
+[node name="UI" parent="." instance=ExtResource("2_4qsk8")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_f8o14")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="platforms" type="Node3D" parent="."]
+
+[node name="platform1" parent="platforms" instance=ExtResource("4_6nj66")]
+size_x = 2
+size_z = 2
+
+[node name="platform2" parent="platforms" instance=ExtResource("4_6nj66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+size_x = 2
+size_z = 2
+
+[node name="platform3" parent="platforms" instance=ExtResource("4_6nj66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+size_x = 2
+size_z = 2
+
+[node name="platform4" parent="platforms" instance=ExtResource("4_6nj66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+size_x = 2
+size_z = 2
+
+[node name="destructables" type="Node3D" parent="."]
+
+[node name="cube1" parent="destructables" instance=ExtResource("5_y3ewk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="cube2" parent="destructables" instance=ExtResource("5_y3ewk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0)
+
+[node name="cube3" parent="destructables" instance=ExtResource("5_y3ewk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
+
+[node name="cube4" parent="destructables" instance=ExtResource("5_y3ewk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 10)
+
+[node name="delete-destructables-zone" parent="." instance=ExtResource("6_nypf1")]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -4, 0)
