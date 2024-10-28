@@ -36,4 +36,5 @@ func _on_on_destroy() -> void:
 	if get_meta("action") == "exit":
 		get_tree().quit()
 	if get_meta("action") == "zen":
-		print("not implemented yet")
+		await get_tree().create_timer(0.6).timeout
+		get_tree().change_scene_to_file("res://zen_mode.tscn")
