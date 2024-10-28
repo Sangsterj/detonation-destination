@@ -33,7 +33,7 @@ func _on_on_destroy() -> void:
 	if get_meta("action") == "start":
 		await get_tree().create_timer(0.6).timeout
 		get_tree().change_scene_to_file("res://level_1.tscn")
-	print(get_meta("action"))
 	if get_meta("action") == "exit":
-		print("qwd")
 		get_tree().quit()
+	if get_meta("action") == "zen":
+		print("not implemented yet")

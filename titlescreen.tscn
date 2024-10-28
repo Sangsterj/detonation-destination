@@ -48,6 +48,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -2.5)
 script = ExtResource("6_6278i")
 metadata/action = "start"
 
+[node name="FloatingCubeZen" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+script = ExtResource("6_6278i")
+metadata/action = "zen"
+
 [node name="FloatingCubeExit" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -2.5)
 script = ExtResource("6_6278i")
@@ -85,6 +90,16 @@ theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 72
 text = "exit"
 
+[node name="quit2" type="Label" parent="UI"]
+offset_left = 512.0
+offset_top = 377.0
+offset_right = 887.0
+offset_bottom = 450.0
+rotation = -0.00232448
+theme_override_fonts/font = ExtResource("8_lwipc")
+theme_override_font_sizes/font_size = 72
+text = "zen"
+
 [node name="title" type="Label" parent="UI"]
 offset_left = 34.0
 offset_top = 32.0
@@ -95,4 +110,5 @@ theme_override_font_sizes/font_size = 100
 text = "Detonation Destination"
 
 [connection signal="on_destroy" from="PhysicalObjects/FloatingCubeStart" to="PhysicalObjects/FloatingCubeStart" method="_on_on_destroy"]
+[connection signal="on_destroy" from="PhysicalObjects/FloatingCubeZen" to="PhysicalObjects/FloatingCubeZen" method="_on_on_destroy"]
 [connection signal="on_destroy" from="PhysicalObjects/FloatingCubeExit" to="PhysicalObjects/FloatingCubeExit" method="_on_on_destroy"]
