@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bccgn8k53orho"]
+[gd_scene load_steps=7 format=3 uid="uid://4tu6m5dy7rfw"]
 
 [ext_resource type="Script" path="res://zen_mode.gd" id="1_7ehm5"]
 [ext_resource type="PackedScene" uid="uid://hkmt7xcxn7na" path="res://camera.tscn" id="2_dpq4u"]

@@ -45,7 +45,10 @@ func weapon_name(weapon):
 		Weapon.CLICK:
 			return "Cursor"
 		Weapon.BOX:
-			return "Box Cannon"
+			if HaveWeaponBox == true:
+				return "Box Cannon"
+			else :
+				return "You do not have access to this weapon"
 		Weapon.PUSH:
 			if HaveWeaponPush == true:
 				return "Push"
