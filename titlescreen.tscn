@@ -109,6 +109,17 @@ theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 100
 text = "Detonation Destination"
 
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "WARNING: DO NOT USE A TRACKPAD. Instructions:  use WASD to move the camera, right click on the screen to turn"
+
 [connection signal="on_destroy" from="PhysicalObjects/FloatingCubeStart" to="PhysicalObjects/FloatingCubeStart" method="_on_on_destroy"]
 [connection signal="on_destroy" from="PhysicalObjects/FloatingCubeZen" to="PhysicalObjects/FloatingCubeZen" method="_on_on_destroy"]
 [connection signal="on_destroy" from="PhysicalObjects/FloatingCubeExit" to="PhysicalObjects/FloatingCubeExit" method="_on_on_destroy"]
