@@ -116,16 +116,17 @@ func base_camera_process(delta):
 							get_tree().call_group("NukeHitbox","queue_free")
 							
 	if Data.current_weapon == Data.Weapon.BOX:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			if not mouse_pressed_prev:
-					var cpos = self.position
-					var Cube = newcube.instantiate()
-					get_parent().add_child(Cube)
-					Cube.position.x = cpos.x
-					Cube.position.y = cpos.y - 2 
-					Cube.position.z = cpos.z
-					mouse_pressed_prev = 1
-					Cube.push(position)
-					
+		if Data.HaveWeaponBox == true:
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+				if not mouse_pressed_prev:
+						var cpos = self.position
+						var Cube = newcube.instantiate()
+						get_parent().add_child(Cube)
+						Cube.position.x = cpos.x
+						Cube.position.y = cpos.y - 2 
+						Cube.position.z = cpos.z
+						mouse_pressed_prev = 1
+						Cube.push(position)
+						
 	
 	mouse_pressed_prev = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)

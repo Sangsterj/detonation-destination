@@ -37,4 +37,10 @@ func _on_on_destroy() -> void:
 		get_tree().quit()
 	if get_meta("action") == "zen":
 		await get_tree().create_timer(0.6).timeout
+		Data.Unlock()
+		Data.Unlock()
+		Data.Unlock()
+		Data.Unlock()
+		Data.Unlock()
+		Data.HaveWeaponBox = true
 		get_tree().change_scene_to_file("res://zen_mode.tscn")
