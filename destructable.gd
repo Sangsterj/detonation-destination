@@ -25,10 +25,13 @@ func destructable_process(delta: float) -> void:
 		explode_anim += delta
 		var rb: RigidBody3D = $RigidBody3D
 		if explode_anim > 2.5:
+			Data.BlocksBroken -= 1
 			if is_in_group("WeaponBox"):
 				Data.Unlock()
 			queue_free()
 		return
+	if Data.BlocksBroken <=0 :
+		get_tree().change_scene_to_file("res://level_select.tscn")
 
 
 func do_sound(sound_path=DEFAULT_EXPLODE_SOUND, volume=1):

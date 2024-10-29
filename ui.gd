@@ -9,6 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$"CanvasLayer/Blocks Broken".text = str("Blocks Broken: ", Data.BlocksBroken)
 	$CanvasLayer/CurrrentWeapon.text = str("Current Weapon: ", Data.weapon_name(Data.current_weapon))
 	NukeCooldown -= delta
 	$CanvasLayer/OrbitalStrikeCooldown.value = NukeCooldown * 100
