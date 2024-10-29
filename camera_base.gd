@@ -131,6 +131,7 @@ func base_camera_process(delta):
 		if Data.HaveWeaponBox == true:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				if not mouse_pressed_prev:
+						Data.BlocksBroken += 1
 						var cpos = self.position
 						var Cube = newcube.instantiate()
 						get_parent().add_child(Cube)

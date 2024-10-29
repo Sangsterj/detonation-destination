@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtdyqyagosp5c"]
+[gd_scene load_steps=9 format=3 uid="uid://dtdyqyagosp5c"]
 
 [ext_resource type="PackedScene" uid="uid://hkmt7xcxn7na" path="res://camera.tscn" id="1_51rqt"]
+[ext_resource type="Script" path="res://level_2.gd" id="1_wdpub"]
 [ext_resource type="PackedScene" uid="uid://cjns13k2ctq5a" path="res://ui.tscn" id="2_4qsk8"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="3_vy2td"]
 [ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="4_6nj66"]
@@ -13,7 +14,8 @@ shader_parameter/SCREEN_WIDTH = 1152.0
 shader_parameter/COLOR_FACTOR = 10.0
 shader_parameter/DITHERING_STRENTH = 0.048
 
-[node name="Level2" type="Node3D"]
+[node name="Level2" type="Node3D" groups=["Scenes"]]
+script = ExtResource("1_wdpub")
 
 [node name="Camera" parent="." instance=ExtResource("1_51rqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.272, 0)
@@ -35,6 +37,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Levelname" type="Label" parent="CanvasLayer"]
+offset_left = 376.0
+offset_top = 286.0
+offset_right = 714.0
+offset_bottom = 355.0
+theme_override_font_sizes/font_size = 50
+text = "Quick Clicking"
 
 [node name="platforms" type="Node3D" parent="."]
 
