@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
 func _on_on_destroy() -> void:
 	if get_meta("action") == "start":
 		await get_tree().create_timer(0.6).timeout
+		Data.BlocksBroken = 17
 		get_tree().change_scene_to_file("res://level_1.tscn")
 	if get_meta("action") == "exit":
 		get_tree().quit()

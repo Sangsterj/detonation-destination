@@ -4,6 +4,8 @@ var HaveWeaponPush = false
 var HaveWeaponNuke = false
 var HaveWeaponBox = false
 var WeaponUnlock = 0
+var ZenMode = false
+var TimeTrialMode = false
 
 var BlocksBroken = 100
 

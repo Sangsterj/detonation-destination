@@ -30,9 +30,7 @@ func destructable_process(delta: float) -> void:
 				Data.Unlock()
 			queue_free()
 		return
-	if Data.BlocksBroken <=0 :
-		get_tree().change_scene_to_file("res://level_select.tscn")
-
+	
 
 func do_sound(sound_path=DEFAULT_EXPLODE_SOUND, volume=1):
 	var new_sound = AudioStreamPlayer3D.new()
@@ -61,6 +59,9 @@ func explode(sound_path=DEFAULT_EXPLODE_SOUND):
 	exp.position = rb.position
 	if get_meta("time_trials_eligible", false):
 		Data.time_trials_objects_destroyed += 1
+	if Data.BlocksBroken <=0 :
+		if Data.ZenMode == false and Data.TimeTrialMode == false :
+			get_tree().change_scene_to_file("res://level_select.tscn")
 	
 func burn(sound_path=DEFAULT_BURN_SOUND):
 	if exploded:
@@ -78,6 +79,9 @@ func burn(sound_path=DEFAULT_BURN_SOUND):
 	exp.position = rb.position
 	if get_meta("time_trials_eligible", false):
 		Data.time_trials_objects_destroyed += 1
+	if Data.BlocksBroken <=0 :
+		if Data.ZenMode == false and Data.TimeTrialMode == false :
+			get_tree().change_scene_to_file("res://level_select.tscn")
 
 
 func push(pos: Vector3):

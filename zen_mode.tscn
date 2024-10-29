@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cglt5046piinp"]
+[gd_scene load_steps=7 format=3 uid="uid://4tu6m5dy7rfw"]
 
 [ext_resource type="Script" path="res://zen_mode.gd" id="1_7ehm5"]
-[ext_resource type="PackedScene" path="res://camera.tscn" id="2_dpq4u"]
+[ext_resource type="PackedScene" uid="uid://hkmt7xcxn7na" path="res://camera.tscn" id="2_dpq4u"]
 [ext_resource type="PackedScene" uid="uid://cjns13k2ctq5a" path="res://ui.tscn" id="3_rxqqi"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="4_l5emd"]
 [ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="5_hgfe6"]
