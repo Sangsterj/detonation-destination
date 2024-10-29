@@ -24,10 +24,11 @@ autoplay = true
 panning_strength = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 3.5)
+transform = Transform3D(1, 0, 0, 0, 0.960079, 0.279729, 0, -0.279729, 0.960079, 0, 1.68316, 1.79486)
 environment = ExtResource("2_g7nlu")
 fov = 100.0
 script = ExtResource("2_o46ny")
+metadata/disallow_change_weapon = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.737596, 0.618904, 0.270019, 0, -0.399885, 0.916565, 0.675243, -0.676055, -0.294953, 0, 36.9107, 0)
@@ -41,7 +42,7 @@ shadow_blur = 10.0
 [node name="platform" parent="PhysicalObjects" instance=ExtResource("4_6wxhk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -2)
 size_x = 12
-size_z = 6
+size_z = 3
 
 [node name="FloatingCubeStart" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -2.5)
@@ -49,9 +50,14 @@ script = ExtResource("6_6278i")
 metadata/action = "start"
 
 [node name="FloatingCubeZen" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -2.5)
 script = ExtResource("6_6278i")
 metadata/action = "zen"
+
+[node name="FloatingCubeTimeTrials" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -2.5)
+script = ExtResource("6_6278i")
+metadata/action = "time_trials"
 
 [node name="FloatingCubeExit" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -2.5)
@@ -71,34 +77,44 @@ grow_vertical = 2
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="start" type="Label" parent="UI"]
-offset_left = 248.0
-offset_top = 229.0
-offset_right = 623.0
-offset_bottom = 302.0
+offset_left = 152.0
+offset_top = 222.0
+offset_right = 527.0
+offset_bottom = 295.0
 rotation = -0.12047
 theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 72
 text = "start"
 
 [node name="quit" type="Label" parent="UI"]
-offset_left = 732.0
-offset_top = 225.0
-offset_right = 1107.0
-offset_bottom = 298.0
+offset_left = 851.0
+offset_top = 392.0
+offset_right = 1226.0
+offset_bottom = 465.0
 rotation = 0.188006
 theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 72
 text = "exit"
 
-[node name="quit2" type="Label" parent="UI"]
-offset_left = 512.0
-offset_top = 377.0
-offset_right = 887.0
-offset_bottom = 450.0
+[node name="zen" type="Label" parent="UI"]
+offset_left = 405.0
+offset_top = 383.0
+offset_right = 780.0
+offset_bottom = 456.0
 rotation = -0.00232448
 theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 72
 text = "zen"
+
+[node name="time_trials" type="Label" parent="UI"]
+offset_left = 506.0
+offset_top = 209.0
+offset_right = 881.0
+offset_bottom = 282.0
+rotation = 0.0439114
+theme_override_fonts/font = ExtResource("8_lwipc")
+theme_override_font_sizes/font_size = 72
+text = "time trials"
 
 [node name="title" type="Label" parent="UI"]
 offset_left = 34.0
@@ -109,7 +125,7 @@ theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 100
 text = "Detonation Destination"
 
-[node name="Label" type="Label" parent="UI"]
+[node name="warning" type="Label" parent="UI"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -118,8 +134,11 @@ offset_top = -28.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
-text = "WARNING: DO NOT USE A TRACKPAD. Instructions:  use WASD to move the camera, right click on the screen to turn"
+text = "WARNING: DO NOT USE A TRACKPAD. USE A MOUSE INSTEAD PLEASE.
+Instructions: use the numbers keys to select weapons, and the mouse to click objects.
+Dont forget to turn on sound also."
 
 [connection signal="on_destroy" from="PhysicalObjects/FloatingCubeStart" to="PhysicalObjects/FloatingCubeStart" method="_on_on_destroy"]
 [connection signal="on_destroy" from="PhysicalObjects/FloatingCubeZen" to="PhysicalObjects/FloatingCubeZen" method="_on_on_destroy"]
+[connection signal="on_destroy" from="PhysicalObjects/FloatingCubeTimeTrials" to="PhysicalObjects/FloatingCubeTimeTrials" method="_on_on_destroy"]
 [connection signal="on_destroy" from="PhysicalObjects/FloatingCubeExit" to="PhysicalObjects/FloatingCubeExit" method="_on_on_destroy"]
