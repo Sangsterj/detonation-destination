@@ -1,0 +1,173 @@
+[gd_scene load_steps=11 format=3 uid="uid://dsiohjso4no75"]
+
+[ext_resource type="Script" path="res://time_trials.gd" id="1_gg4hw"]
+[ext_resource type="Environment" uid="uid://cp4r3tj0m5ceu" path="res://camera_env.tres" id="2_67dr5"]
+[ext_resource type="Script" path="res://camera_base.gd" id="3_laara"]
+[ext_resource type="PackedScene" uid="uid://cjns13k2ctq5a" path="res://ui.tscn" id="4_8d4ia"]
+[ext_resource type="AudioStream" uid="uid://br87eeit38w1u" path="res://assets/sounds/Terraria calamity chill music.mp3" id="4_nee4p"]
+[ext_resource type="Shader" path="res://shaders/dither.gdshader" id="5_uhrgu"]
+[ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="6_bvw2o"]
+[ext_resource type="FontFile" uid="uid://dxh1euvkgfnvf" path="res://assets/millennia.regular.ttf" id="6_d5e76"]
+[ext_resource type="PackedScene" uid="uid://dbvvnfyw0y6xy" path="res://delete_destructables_zone.tscn" id="7_f1m10"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8qjwp"]
+shader = ExtResource("5_uhrgu")
+shader_parameter/SCREEN_WIDTH = 1152.0
+shader_parameter/COLOR_FACTOR = 10.0
+shader_parameter/DITHERING_STRENTH = 0.048
+
+[node name="Time_trials" type="Node3D"]
+script = ExtResource("1_gg4hw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.824265, 0.181561, -0.536305, 0, 0.947193, 0.320663, 0.566205, -0.264311, 0.780738, -5.06883, 7.07788, 6.17521)
+environment = ExtResource("2_67dr5")
+fov = 90.02
+script = ExtResource("3_laara")
+
+[node name="BG" type="AudioStreamPlayer3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+stream = ExtResource("4_nee4p")
+attenuation_model = 3
+unit_size = 7.0
+max_db = 1.0
+autoplay = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.737596, 0.618904, 0.270019, 0, -0.399885, 0.916565, 0.675243, -0.676055, -0.294953, 0, 36.9107, 0)
+shadow_enabled = true
+shadow_blur = 10.0
+
+[node name="UI" parent="." instance=ExtResource("4_8d4ia")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_8qjwp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ObjectsDestroyed" type="Label" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_d5e76")
+theme_override_font_sizes/font_size = 50
+text = "0/444 objects destroyed"
+horizontal_alignment = 1
+
+[node name="WinTime" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_d5e76")
+theme_override_font_sizes/font_size = 160
+text = "Time: ???.?s"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/WinTime"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_d5e76")
+theme_override_font_sizes/font_size = 30
+text = "(press escape to go back)"
+
+[node name="Platforms" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -4)
+
+[node name="platform" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+size_x = 9
+size_z = 11
+
+[node name="platform2" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, -4.5)
+size_x = 8
+size_z = 6
+
+[node name="platform3" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, 8.5)
+size_x = 6
+size_z = 8
+
+[node name="platform4" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -1, 2)
+size_x = 12
+size_z = 7
+
+[node name="platform5" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, -0.5, 9.5)
+size_x = 16
+size_z = 6
+
+[node name="platform6" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0.5, -4)
+size_x = 5
+size_z = 6
+
+[node name="platform7" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 2)
+size_x = 4
+size_z = 6
+
+[node name="platform8" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -1, -5)
+size_x = 5
+size_z = 7
+
+[node name="platform9" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -10)
+size_x = 11
+size_z = 5
+
+[node name="platform10" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -1, 14.5)
+size_x = 4
+size_z = 4
+
+[node name="platform11" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1, 16.5)
+size_x = 8
+size_z = 7
+
+[node name="platform12" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 7.5)
+size_x = 3
+size_z = 7
+
+[node name="platform13" parent="Platforms" instance=ExtResource("6_bvw2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2.5, 15.5)
+size_x = 5
+size_z = 6
+
+[node name="Destructables" type="Node3D" parent="."]
+
+[node name="delete-destructables-zone" parent="." instance=ExtResource("7_f1m10")]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -4, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

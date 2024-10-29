@@ -38,6 +38,7 @@ func do_sound(sound_path=DEFAULT_EXPLODE_SOUND, volume=1):
 	var new_sound = AudioStreamPlayer3D.new()
 	new_sound.set_stream(load(sound_path))
 	new_sound.volume_db = volume
+	new_sound.attenuation_model = AudioStreamPlayer3D.ATTENUATION_DISABLED
 	new_sound.pitch_scale = randf()*0.4+0.8
 	$Sounds.add_child(new_sound)
 	new_sound.global_position = $RigidBody3D.global_position
@@ -58,6 +59,8 @@ func explode(sound_path=DEFAULT_EXPLODE_SOUND):
 	var exp: GPUParticles3D = $ExplosionParticles
 	exp.emitting = true
 	exp.position = rb.position
+	if get_meta("time_trials_eligible", false):
+		Data.time_trials_objects_destroyed += 1
 	
 func burn(sound_path=DEFAULT_BURN_SOUND):
 	if exploded:
@@ -73,13 +76,15 @@ func burn(sound_path=DEFAULT_BURN_SOUND):
 	var exp: GPUParticles3D = $BurnParticles
 	exp.emitting = true
 	exp.position = rb.position
+	if get_meta("time_trials_eligible", false):
+		Data.time_trials_objects_destroyed += 1
 
 
 func push(pos: Vector3):
 	var intensity = randi_range(1, 6)
 	do_sound(str("res://assets/sounds/thump-", intensity, ".mp3"))
 	on_destroy.emit()
-	var push_force = intensity*1.3+9
+	var push_force = intensity*3.4+9
 	var dir = (pos - $RigidBody3D.position).normalized()*-1
 	dir.y = abs(dir.y)
 	$RigidBody3D.apply_impulse(dir*push_force)

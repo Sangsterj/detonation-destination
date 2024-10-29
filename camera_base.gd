@@ -28,17 +28,27 @@ func base_camera_process(delta):
 	# screen shake
 	fov = BASE_FOV + randf_range(0.0, Data.shaking_amt)
 	
-	# inputs
-	if Input.is_action_pressed("click"):
+	if Input.is_action_just_pressed("escape"):
+		get_tree().change_scene_to_file("res://titlescreen.tscn")
 		Data.current_weapon = Data.Weapon.CLICK
-	if Input.is_action_pressed("flamethrower"):
-		Data.current_weapon = Data.Weapon.FLAMETHROWER
-	if Input.is_action_pressed("push"):
-		Data.current_weapon = Data.Weapon.PUSH
-	if Input.is_action_pressed("nuke"):
-		Data.current_weapon = Data.Weapon.NUKE
-	if Input.is_action_pressed("cube"):
-		Data.current_weapon = Data.Weapon.BOX
+		return
+	
+	if get_meta("no_interaction", false):
+		mouse_pressed_prev = false
+		return
+	
+	# inputs
+	if not get_meta("disallow_change_weapon", false):
+		if Input.is_action_pressed("click"):
+			Data.current_weapon = Data.Weapon.CLICK
+		if Input.is_action_pressed("flamethrower"):
+			Data.current_weapon = Data.Weapon.FLAMETHROWER
+		if Input.is_action_pressed("push"):
+			Data.current_weapon = Data.Weapon.PUSH
+		if Input.is_action_pressed("nuke"):
+			Data.current_weapon = Data.Weapon.NUKE
+		if Input.is_action_pressed("cube"):
+			Data.current_weapon = Data.Weapon.BOX
 	
 	# destroy destructables
 	var cam = get_viewport().get_camera_3d()
@@ -71,9 +81,9 @@ func base_camera_process(delta):
 								if intersect_push.size() > 0:
 									if intersect_push.collider.get_parent().has_meta("destructable"):
 										var other = intersect_push.collider
-										var dist = original.position.distance_to(other.global_position)
+										var dist = original.global_position.distance_to(other.global_position)
 										var deltapos = (other.global_position-raycast_start_push)
-										other.apply_impulse(deltapos*minf(0.08/(dist), 1))
+										other.apply_impulse(deltapos*minf(0.12/(dist), 1))
 								# todo: this should also push (explode?) nearby cubes
 						original.get_parent().explode()
 						
@@ -111,6 +121,8 @@ func base_camera_process(delta):
 							nuke.position.x = pos.x
 							nuke.position.y = pos.y
 							nuke.position.z = pos.z
+							nuke.scale.x = 3
+							nuke.scale.y = 3
 							mouse_pressed_prev = 1
 							await get_tree().create_timer(0.5).timeout
 							get_tree().call_group("NukeHitbox","queue_free")
@@ -122,9 +134,9 @@ func base_camera_process(delta):
 						var cpos = self.position
 						var Cube = newcube.instantiate()
 						get_parent().add_child(Cube)
-						Cube.position.x = cpos.x
-						Cube.position.y = cpos.y - 2 
-						Cube.position.z = cpos.z
+						Cube.get_node("RigidBody3D").position.x = cpos.x-sin(rotation.y)*cos(rotation.x)
+						Cube.get_node("RigidBody3D").position.y = cpos.y+sin(rotation.x)
+						Cube.get_node("RigidBody3D").position.z = cpos.z-cos(rotation.y)*cos(rotation.x)
 						mouse_pressed_prev = 1
 						Cube.push(position)
 						

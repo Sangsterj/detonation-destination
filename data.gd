@@ -2,10 +2,13 @@ extends Node
 var HaveWeaponFlamethrower = false
 var HaveWeaponPush = false
 var HaveWeaponNuke = false
-var HaveWeaponExplosive = false
 var HaveWeaponBox = false
 var WeaponUnlock = 0
+
 var BlocksBroken = 100
+
+var time_trials_objects_destroyed = 0
+
 # this script is a "global" script, meaning it is always loaded, even between scene changes
 # this can be found in the project > project settings > globals tab
 

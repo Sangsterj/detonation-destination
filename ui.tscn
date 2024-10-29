@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjns13k2ctq5a"]
+[gd_scene load_steps=9 format=3 uid="uid://cjns13k2ctq5a"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_0vap4"]
 [ext_resource type="FontFile" uid="uid://dxh1euvkgfnvf" path="res://assets/millennia.regular.ttf" id="1_xkolf"]
+[ext_resource type="Texture2D" uid="uid://ba7py1vatleio" path="res://assets/cursor.png" id="2_406hb"]
+[ext_resource type="Texture2D" uid="uid://oyd2qpsjrjww" path="res://assets/flamethrower.png" id="4_a7gka"]
+[ext_resource type="Texture2D" uid="uid://bov2wxnei16ce" path="res://assets/push.png" id="5_cd23c"]
+[ext_resource type="Texture2D" uid="uid://b1qjmtswm6p0m" path="res://assets/orbital-strike-cannon.png" id="6_cdnyg"]
+[ext_resource type="Texture2D" uid="uid://txewvdbctinv" path="res://assets/box.png" id="7_rqtpc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fpjy"]
 bg_color = Color(1, 1, 1, 1)
@@ -39,6 +44,7 @@ theme_override_font_sizes/font_size = 24
 text = "Blocks Broken: 0"
 
 [node name="OrbitalStrikeCooldown" type="ProgressBar" parent="CanvasLayer"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -53,3 +59,39 @@ grow_vertical = 0
 theme_override_styles/fill = SubResource("StyleBoxFlat_8fpjy")
 max_value = 150.0
 show_percentage = false
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="WeaponsBar" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(-420, 69)
+
+[node name="Cursor" type="Sprite2D" parent="CanvasLayer/Control/WeaponsBar"]
+texture = ExtResource("2_406hb")
+centered = false
+
+[node name="Flamethrower" type="Sprite2D" parent="CanvasLayer/Control/WeaponsBar"]
+position = Vector2(90, 0)
+texture = ExtResource("4_a7gka")
+centered = false
+
+[node name="Push" type="Sprite2D" parent="CanvasLayer/Control/WeaponsBar"]
+position = Vector2(180, 0)
+texture = ExtResource("5_cd23c")
+centered = false
+
+[node name="OrbitalStrikeCannon" type="Sprite2D" parent="CanvasLayer/Control/WeaponsBar"]
+position = Vector2(270, 0)
+texture = ExtResource("6_cdnyg")
+centered = false
+
+[node name="Cursor4" type="Sprite2D" parent="CanvasLayer/Control/WeaponsBar"]
+position = Vector2(360, 0)
+texture = ExtResource("7_rqtpc")
+centered = false
