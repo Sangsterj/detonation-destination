@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://yaf7f6ubjri5"]
+[gd_scene load_steps=9 format=3 uid="uid://dtdyqyagosp5c"]
 
-[ext_resource type="PackedScene" path="res://camera.tscn" id="1_51rqt"]
+[ext_resource type="PackedScene" uid="uid://hkmt7xcxn7na" path="res://camera.tscn" id="1_51rqt"]
+[ext_resource type="Script" path="res://level_2.gd" id="1_wdpub"]
 [ext_resource type="PackedScene" uid="uid://cjns13k2ctq5a" path="res://ui.tscn" id="2_4qsk8"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="3_vy2td"]
 [ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="4_6nj66"]
@@ -13,7 +14,8 @@ shader_parameter/SCREEN_WIDTH = 1152.0
 shader_parameter/COLOR_FACTOR = 10.0
 shader_parameter/DITHERING_STRENTH = 0.048
 
-[node name="Level2" type="Node3D"]
+[node name="Level2" type="Node3D" groups=["Scenes"]]
+script = ExtResource("1_wdpub")
 
 [node name="Camera" parent="." instance=ExtResource("1_51rqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.272, 0)
@@ -35,6 +37,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Levelname" type="Label" parent="CanvasLayer"]
+offset_left = 56.0
+offset_top = 179.0
+offset_right = 1145.0
+offset_bottom = 292.0
+theme_override_font_sizes/font_size = 40
+text = "                                  Quick Clicking
+Use the flamethrower to destroy all blocks in 15 seconds"
+
+[node name="NoClick" type="Label" parent="CanvasLayer"]
+offset_left = 253.0
+offset_top = 334.0
+offset_right = 971.0
+offset_bottom = 475.0
+theme_override_font_sizes/font_size = 50
+text = "Clicking Not allowed
+Press F to use a flamethrower"
+
+[node name="ToldYouSo" type="Label" parent="CanvasLayer"]
+offset_left = 146.0
+offset_top = 297.0
+offset_right = 1093.0
+offset_bottom = 366.0
+theme_override_font_sizes/font_size = 50
+text = "What did I just say. Try again next time."
+
+[node name="Timeleft" type="Label" parent="CanvasLayer"]
+offset_left = 28.0
+offset_top = 40.0
+offset_right = 975.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 50
+text = "Time Left: 0"
 
 [node name="platforms" type="Node3D" parent="."]
 
@@ -85,3 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 10)
 
 [node name="delete-destructables-zone" parent="." instance=ExtResource("6_nypf1")]
 transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -4, 0)
+
+[node name="LevelTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

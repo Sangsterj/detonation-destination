@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://xfpg8pm637ox"]
+[gd_scene load_steps=9 format=3 uid="uid://djsr5y08tp4td"]
+
+[ext_resource type="Script" path="res://level_1.gd" id="1_3etog"]
 
 [ext_resource type="PackedScene" uid="uid://hkmt7xcxn7na" path="res://camera.tscn" id="1_cauy1"]
 [ext_resource type="PackedScene" uid="uid://cjns13k2ctq5a" path="res://ui.tscn" id="2_few4h"]
@@ -13,7 +15,8 @@ shader_parameter/SCREEN_WIDTH = 1152.0
 shader_parameter/COLOR_FACTOR = 10.0
 shader_parameter/DITHERING_STRENTH = 0.048
 
-[node name="Level1" type="Node3D"]
+[node name="Level1" type="Node3D" groups=["Scenes"]]
+script = ExtResource("1_3etog")
 
 [node name="Camera" parent="." instance=ExtResource("1_cauy1")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.089993, -2.24013, -3.44074)
@@ -34,6 +37,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Levelname" type="Label" parent="CanvasLayer"]
+offset_left = 239.0
+offset_top = 286.0
+offset_right = 869.0
+offset_bottom = 355.0
+theme_override_font_sizes/font_size = 50
+text = "INTRODUCTORY CLICKING"
 
 [node name="platforms" type="Node3D" parent="."]
 

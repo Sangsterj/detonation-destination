@@ -4,7 +4,9 @@ var HaveWeaponPush = false
 var HaveWeaponNuke = false
 var HaveWeaponBox = false
 var WeaponUnlock = 0
-
+var ZenMode = false
+var TimeTrialMode = false
+var level = 0
 var BlocksBroken = 100
 
 var time_trials_objects_destroyed = 0
@@ -76,3 +78,28 @@ func shake_screen(amt: int) -> void:
 
 func _process(delta: float) -> void:
 	shaking_amt *= 1-delta*SHAKING_GO_AWAY
+	if BlocksBroken <= 0 :
+		if level == 1 :
+			BlocksBroken = 100
+			get_tree().change_scene_to_file("res://level_2.tscn")
+		if level == 2 :
+			BlocksBroken = 100
+			get_tree().change_scene_to_file("res://main.tscn")
+			
+	
+	if Input.is_action_just_pressed("reset"):
+		Data.levelfail()
+
+		
+
+func blockbreak():
+	BlocksBroken -= 1
+
+func levelfail():
+	if level == 1 :
+		get_tree().call_group("Scenes", "queue free")
+		get_tree().change_scene_to_file("res://level_1.tscn")
+	if level == 2 :
+		get_tree().call_group("Scenes", "queue free")
+		get_tree().change_scene_to_file("res://level_2.tscn")
+	

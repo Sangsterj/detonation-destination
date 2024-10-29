@@ -15,7 +15,7 @@ shader_parameter/SCREEN_WIDTH = 1152.0
 shader_parameter/COLOR_FACTOR = 10.0
 shader_parameter/DITHERING_STRENTH = 0.048
 
-[node name="Titlescreen" type="Node3D"]
+[node name="Titlescreen" type="Node3D" groups=["Scenes"]]
 
 [node name="TitlescreenMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_esf0v")
@@ -116,7 +116,7 @@ theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 72
 text = "time trials"
 
-[node name="title" type="Label" parent="UI"]
+[node name="title" type="Label" parent="UI" groups=["Scenes"]]
 offset_left = 34.0
 offset_top = 32.0
 offset_right = 1108.0
