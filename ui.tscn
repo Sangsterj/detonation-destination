@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjns13k2ctq5a"]
+[gd_scene load_steps=10 format=3 uid="uid://cjns13k2ctq5a"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_0vap4"]
 [ext_resource type="FontFile" uid="uid://dxh1euvkgfnvf" path="res://assets/millennia.regular.ttf" id="1_xkolf"]
 [ext_resource type="Texture2D" uid="uid://ba7py1vatleio" path="res://assets/cursor.png" id="2_406hb"]
+[ext_resource type="Script" path="res://weapons_bar.gd" id="3_o2mpg"]
 [ext_resource type="Texture2D" uid="uid://oyd2qpsjrjww" path="res://assets/flamethrower.png" id="4_a7gka"]
 [ext_resource type="Texture2D" uid="uid://bov2wxnei16ce" path="res://assets/push.png" id="5_cd23c"]
 [ext_resource type="Texture2D" uid="uid://b1qjmtswm6p0m" path="res://assets/orbital-strike-cannon.png" id="6_cdnyg"]
@@ -71,6 +72,7 @@ grow_horizontal = 0
 
 [node name="WeaponsBar" type="Sprite2D" parent="CanvasLayer/Control"]
 position = Vector2(-420, 69)
+script = ExtResource("3_o2mpg")
 
 [node name="Cursor" type="Sprite2D" parent="CanvasLayer/Control/WeaponsBar"]
 texture = ExtResource("2_406hb")
@@ -91,7 +93,7 @@ position = Vector2(270, 0)
 texture = ExtResource("6_cdnyg")
 centered = false
 
-[node name="Cursor4" type="Sprite2D" parent="CanvasLayer/Control/WeaponsBar"]
+[node name="BoxCannon" type="Sprite2D" parent="CanvasLayer/Control/WeaponsBar"]
 position = Vector2(360, 0)
 texture = ExtResource("7_rqtpc")
 centered = false
