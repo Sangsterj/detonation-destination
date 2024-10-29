@@ -3,7 +3,7 @@ extends Node3D
 var exploded = false
 var explode_anim = 0.0
 signal on_destroy
-
+var activated = false
 # every destructable needs these children with these names:
 # RigidBody3D named RigidBody3D
 # GPUParticles3D named ExplosionParticles
@@ -23,9 +23,12 @@ func _ready() -> void:
 func destructable_process(delta: float) -> void:
 	if exploded:
 		explode_anim += delta
+		if activated == false :
+			Data.BlocksBroken -= 1
+			activated = true
 		var rb: RigidBody3D = $RigidBody3D
 		if explode_anim > 2.5:
-			Data.BlocksBroken -= 1
+			activated = false
 			if is_in_group("WeaponBox"):
 				Data.Unlock()
 			queue_free()
