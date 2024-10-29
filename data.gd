@@ -5,6 +5,8 @@ var HaveWeaponNuke = false
 var HaveWeaponBox = false
 var WeaponUnlock = 0
 
+var BlocksBroken = 100
+
 var time_trials_objects_destroyed = 0
 
 # this script is a "global" script, meaning it is always loaded, even between scene changes
