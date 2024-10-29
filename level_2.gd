@@ -3,6 +3,9 @@ var running = false
 var time = 15
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Data.HaveWeaponBox = false
+	Data.HaveWeaponNuke = false
+	Data.HaveWeaponPush = false
 	Data.HaveWeaponFlamethrower = true
 	$CanvasLayer/NoClick.hide()
 	$CanvasLayer/ToldYouSo.hide()
