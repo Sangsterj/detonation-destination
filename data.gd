@@ -81,7 +81,15 @@ func _process(delta: float) -> void:
 	if BlocksBroken <= 0 :
 		if level == 1 :
 			BlocksBroken = 100
+			get_tree().change_scene_to_file("res://level_2.tscn")
+		if level == 2 :
+			BlocksBroken = 100
 			get_tree().change_scene_to_file("res://main.tscn")
+			
+	
+	if Input.is_action_just_pressed("reset"):
+		Data.levelfail()
+
 		
 
 func blockbreak():

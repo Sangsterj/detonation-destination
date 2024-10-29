@@ -39,12 +39,38 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Levelname" type="Label" parent="CanvasLayer"]
-offset_left = 376.0
-offset_top = 286.0
-offset_right = 714.0
-offset_bottom = 355.0
+offset_left = 56.0
+offset_top = 179.0
+offset_right = 1145.0
+offset_bottom = 292.0
+theme_override_font_sizes/font_size = 40
+text = "                                  Quick Clicking
+Use the flamethrower to destroy all blocks in 15 seconds"
+
+[node name="NoClick" type="Label" parent="CanvasLayer"]
+offset_left = 253.0
+offset_top = 334.0
+offset_right = 971.0
+offset_bottom = 475.0
 theme_override_font_sizes/font_size = 50
-text = "Quick Clicking"
+text = "Clicking Not allowed
+Press F to use a flamethrower"
+
+[node name="ToldYouSo" type="Label" parent="CanvasLayer"]
+offset_left = 146.0
+offset_top = 297.0
+offset_right = 1093.0
+offset_bottom = 366.0
+theme_override_font_sizes/font_size = 50
+text = "What did I just say. Try again next time."
+
+[node name="Timeleft" type="Label" parent="CanvasLayer"]
+offset_left = 28.0
+offset_top = 40.0
+offset_right = 975.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 50
+text = "Time Left: 0"
 
 [node name="platforms" type="Node3D" parent="."]
 
@@ -95,3 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 10)
 
 [node name="delete-destructables-zone" parent="." instance=ExtResource("6_nypf1")]
 transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -4, 0)
+
+[node name="LevelTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
