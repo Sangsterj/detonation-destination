@@ -71,8 +71,9 @@ func base_camera_process(delta):
 								if intersect_push.size() > 0:
 									if intersect_push.collider.get_parent().has_meta("destructable"):
 										var other = intersect_push.collider
-										var dist = original.position.distance_to(other.global_position)
+										var dist = original.global_position.distance_to(other.global_position)
 										var deltapos = (other.global_position-raycast_start_push)
+										print(dist, deltapos)
 										other.apply_impulse(deltapos*minf(0.08/(dist), 1))
 								# todo: this should also push (explode?) nearby cubes
 						original.get_parent().explode()
@@ -122,9 +123,9 @@ func base_camera_process(delta):
 						var cpos = self.position
 						var Cube = newcube.instantiate()
 						get_parent().add_child(Cube)
-						Cube.position.x = cpos.x
-						Cube.position.y = cpos.y - 2 
-						Cube.position.z = cpos.z
+						Cube.get_node("RigidBody3D").position.x = cpos.x-3*sin(rotation.y)
+						Cube.get_node("RigidBody3D").position.y = cpos.y - 2
+						Cube.get_node("RigidBody3D").position.z = cpos.z-3*cos(rotation.y)
 						mouse_pressed_prev = 1
 						Cube.push(position)
 						

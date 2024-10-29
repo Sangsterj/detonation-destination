@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://b15jo4cwp5sq5"]
+[gd_scene load_steps=12 format=3 uid="uid://b15jo4cwp5sq5"]
 
-[ext_resource type="PackedScene" uid="uid://hkmt7xcxn7na" path="res://camera.tscn" id="1_jiv8v"]
+[ext_resource type="Script" path="res://camera_move_testing.gd" id="1_4j173"]
 [ext_resource type="PackedScene" uid="uid://dfy0mtas2a5f3" path="res://cube.tscn" id="1_ntlfe"]
+[ext_resource type="Environment" uid="uid://cp4r3tj0m5ceu" path="res://camera_env.tres" id="1_wer36"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="2_ixf85"]
+[ext_resource type="Material" uid="uid://cw64lf44txoat" path="res://flame_particles.tres" id="2_j2toa"]
 [ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="3_elk4y"]
+[ext_resource type="ArrayMesh" uid="uid://d2wv5oin3c8ur" path="res://assets/octahedron.obj" id="3_ep2qe"]
 [ext_resource type="PackedScene" uid="uid://cjns13k2ctq5a" path="res://ui.tscn" id="4_1j1g5"]
 [ext_resource type="PackedScene" uid="uid://dbvvnfyw0y6xy" path="res://delete_destructables_zone.tscn" id="5_q0hm0"]
-[ext_resource type="PackedScene" uid="uid://dfw3saqrw74fc" path="res://WeaponBox.tscn" id="7_bm0m6"]
 [ext_resource type="PackedScene" uid="uid://cypfvohgfi7vm" path="res://octahedron.tscn" id="9_thhs8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6prb"]
@@ -17,7 +19,17 @@ shader_parameter/DITHERING_STRENTH = 0.048
 
 [node name="lav-testing" type="Node3D" groups=["Scenes"]]
 
-[node name="Camera" parent="." instance=ExtResource("1_jiv8v")]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.824265, 0.181561, -0.536305, 0, 0.947193, 0.320663, 0.566205, -0.264311, 0.780738, -5.06883, 7.07788, 6.17521)
+environment = ExtResource("1_wer36")
+fov = 90.02
+script = ExtResource("1_4j173")
+
+[node name="FlamethrowerFire" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, -1.49012e-08, 5.96046e-08, 0, 1, -2.98023e-08, -2.98023e-08, -1.49012e-08, 1, 0, 0, 0)
+emitting = false
+process_material = ExtResource("2_j2toa")
+draw_pass_1 = ExtResource("3_ep2qe")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.737596, 0.618904, 0.270019, 0, -0.399885, 0.916565, 0.675243, -0.676055, -0.294953, 0, 36.9107, 0)
@@ -307,17 +319,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5.14079, -5.00683)
 [node name="octahedron-8" parent="destructables" instance=ExtResource("9_thhs8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5.14079, -0.00683069)
 
-[node name="WeaponBox" parent="destructables" instance=ExtResource("7_bm0m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77115, 3.06091, 0)
-
-[node name="WeaponBox2" parent="destructables" instance=ExtResource("7_bm0m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77115, 3.06091, 2.76079)
-
-[node name="WeaponBox3" parent="destructables" instance=ExtResource("7_bm0m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77115, 3.06091, 4.81095)
-
-[node name="WeaponBox4" parent="destructables" instance=ExtResource("7_bm0m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77115, 3.06091, -2.75719)
-
 [node name="delete-destructables-zone" parent="." instance=ExtResource("5_q0hm0")]
-transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -4, 0)
+transform = Transform3D(600, 0, 0, 0, 1, 0, 0, 0, 600, 0, -4, 0)
