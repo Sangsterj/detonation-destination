@@ -29,6 +29,7 @@ func base_camera_process(delta):
 	fov = BASE_FOV + randf_range(0.0, Data.shaking_amt)
 	
 	if Input.is_action_just_pressed("escape"):
+		Data.level = 0
 		get_tree().change_scene_to_file("res://titlescreen.tscn")
 		Data.current_weapon = Data.Weapon.CLICK
 		return
