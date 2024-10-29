@@ -84,6 +84,9 @@ func _process(delta: float) -> void:
 			get_tree().change_scene_to_file("res://level_2.tscn")
 		if level == 2 :
 			BlocksBroken = 100
+			get_tree().change_scene_to_file("res://level_3.tscn")
+		if level == 3 :
+			BlocksBroken = 100
 			get_tree().change_scene_to_file("res://main.tscn")
 			
 	
@@ -102,4 +105,7 @@ func levelfail():
 	if level == 2 :
 		get_tree().call_group("Scenes", "queue free")
 		get_tree().change_scene_to_file("res://level_2.tscn")
+	if level == 3 :
+		get_tree().call_group("Scenes", "queue free")
+		get_tree().change_scene_to_file("res://level_3.tscn")
 	
