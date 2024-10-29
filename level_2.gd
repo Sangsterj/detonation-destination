@@ -8,7 +8,7 @@ func _ready() -> void:
 	$CanvasLayer/ToldYouSo.hide()
 	Data.BlocksBroken = 8
 	Data.level = 2
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(3.5).timeout
 	$CanvasLayer/Levelname.hide()
 	$CanvasLayer/NoClick.show()
 	pass # Replace with function body.

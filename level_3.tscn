@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq0qyyc1hg1p7"]
+[gd_scene load_steps=10 format=3 uid="uid://dq0qyyc1hg1p7"]
 
 [ext_resource type="Script" path="res://level_3.gd" id="1_72lxn"]
 [ext_resource type="PackedScene" uid="uid://hkmt7xcxn7na" path="res://camera.tscn" id="2_5hsli"]
 [ext_resource type="PackedScene" uid="uid://cjns13k2ctq5a" path="res://ui.tscn" id="3_0fn30"]
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="4_enbci"]
 [ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="5_4sbmv"]
+[ext_resource type="FontFile" uid="uid://dxh1euvkgfnvf" path="res://assets/millennia.regular.ttf" id="5_tdqhm"]
 [ext_resource type="PackedScene" uid="uid://dfy0mtas2a5f3" path="res://cube.tscn" id="6_f5jur"]
 [ext_resource type="PackedScene" uid="uid://dbvvnfyw0y6xy" path="res://delete_destructables_zone.tscn" id="7_7n7sg"]
 
@@ -38,29 +39,56 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Levelname" type="Label" parent="CanvasLayer"]
-offset_left = 287.0
-offset_top = 305.0
-offset_right = 917.0
-offset_bottom = 374.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = 271.0
+offset_right = 315.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_tdqhm")
 theme_override_font_sizes/font_size = 50
 text = "Shoving Blocks"
+horizontal_alignment = 1
 
 [node name="NoClick" type="Label" parent="CanvasLayer"]
-offset_left = 124.0
-offset_top = 226.0
-offset_right = 1069.0
-offset_bottom = 367.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -472.5
+offset_top = -165.0
+offset_right = 472.5
+offset_bottom = 70.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_tdqhm")
 theme_override_font_sizes/font_size = 50
-text = "You also Can't click in this level.
-Press P to push the blocks off the edge!"
+text = "You also cant click in this level.
+Press 3 to change weapon to \"push\"!"
+horizontal_alignment = 1
 
 [node name="ComeOn" type="Label" parent="CanvasLayer"]
-offset_left = 120.0
-offset_top = 247.0
-offset_right = 1065.0
-offset_bottom = 388.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -472.5
+offset_top = -10.0
+offset_right = 472.5
+offset_bottom = 70.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_tdqhm")
 theme_override_font_sizes/font_size = 50
-text = "Come On. Don't you trust me?"
+text = "I'm dissappointed in you. Try again."
+horizontal_alignment = 1
 
 [node name="platforms" type="Node3D" parent="."]
 

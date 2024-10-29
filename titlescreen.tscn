@@ -50,12 +50,12 @@ script = ExtResource("6_6278i")
 metadata/action = "start"
 
 [node name="FloatingCubeZen" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -2.5)
 script = ExtResource("6_6278i")
 metadata/action = "zen"
 
 [node name="FloatingCubeTimeTrials" parent="PhysicalObjects" instance=ExtResource("5_tfxc3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -2.5)
 script = ExtResource("6_6278i")
 metadata/action = "time_trials"
 
@@ -77,40 +77,40 @@ grow_vertical = 2
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="start" type="Label" parent="UI"]
-offset_left = 152.0
-offset_top = 222.0
-offset_right = 527.0
-offset_bottom = 295.0
+offset_left = 142.0
+offset_top = 233.0
+offset_right = 517.0
+offset_bottom = 306.0
 rotation = -0.12047
 theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 72
-text = "Tutorial"
+text = "tutorial"
 
 [node name="quit" type="Label" parent="UI"]
-offset_left = 851.0
-offset_top = 392.0
-offset_right = 1226.0
-offset_bottom = 465.0
-rotation = 0.188006
+offset_left = 822.0
+offset_top = 402.0
+offset_right = 1197.0
+offset_bottom = 475.0
+rotation = -0.20791
 theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 72
 text = "exit"
 
 [node name="zen" type="Label" parent="UI"]
-offset_left = 405.0
-offset_top = 383.0
-offset_right = 780.0
-offset_bottom = 456.0
-rotation = -0.00232448
+offset_left = 644.0
+offset_top = 218.0
+offset_right = 1019.0
+offset_bottom = 291.0
+rotation = 0.0879968
 theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 72
 text = "zen"
 
 [node name="time_trials" type="Label" parent="UI"]
-offset_left = 506.0
-offset_top = 209.0
-offset_right = 881.0
-offset_bottom = 282.0
+offset_left = 288.0
+offset_top = 382.0
+offset_right = 663.0
+offset_bottom = 455.0
 rotation = 0.0439114
 theme_override_fonts/font = ExtResource("8_lwipc")
 theme_override_font_sizes/font_size = 72

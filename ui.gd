@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Data.TimeTrialMode == true :
 		$"CanvasLayer/Blocks Broken".hide()
-	$"CanvasLayer/Blocks Broken".text = str("Blocks Broken: ", Data.BlocksBroken)
+	$"CanvasLayer/Blocks Broken".text = str("Blocks Remaining: ", Data.BlocksBroken)
 	$CanvasLayer/CurrrentWeapon.text = str("Current Weapon: ", Data.weapon_name(Data.current_weapon))
 	NukeCooldown -= delta
 	$CanvasLayer/OrbitalStrikeCooldown.value = NukeCooldown * 100

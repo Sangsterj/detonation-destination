@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4tu6m5dy7rfw"]
+[gd_scene load_steps=9 format=3 uid="uid://4tu6m5dy7rfw"]
 
 [ext_resource type="Script" path="res://zen_mode.gd" id="1_7ehm5"]
 [ext_resource type="PackedScene" uid="uid://hkmt7xcxn7na" path="res://camera.tscn" id="2_dpq4u"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://shaders/dither.gdshader" id="4_l5emd"]
 [ext_resource type="PackedScene" uid="uid://bvyy12bq5dioq" path="res://green_platform.tscn" id="5_hgfe6"]
 [ext_resource type="AudioStream" uid="uid://br87eeit38w1u" path="res://assets/sounds/Terraria calamity chill music.mp3" id="6_flsd3"]
+[ext_resource type="PackedScene" uid="uid://dbvvnfyw0y6xy" path="res://delete_destructables_zone.tscn" id="7_j1ms5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nnq2b"]
 shader = ExtResource("4_l5emd")
@@ -144,3 +145,6 @@ size_z = 10
 
 [node name="Chill Music" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_flsd3")
+
+[node name="delete-destructables-zone" parent="." instance=ExtResource("7_j1ms5")]
+transform = Transform3D(2000, 0, 0, 0, 1, 0, 0, 0, 2000, 0, -17, 0)
